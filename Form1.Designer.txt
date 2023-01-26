@@ -1,0 +1,353 @@
+﻿namespace _0923
+{
+    partial class Form1
+    {
+        /// <summary>
+        /// 設計工具所需的變數。
+        /// </summary>
+        private System.ComponentModel.IContainer components = null;
+
+        /// <summary>
+        /// 清除任何使用中的資源。
+        /// </summary>
+        /// <param name="disposing">如果應該處置受控資源則為 true，否則為 false。</param>
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing && (components != null))
+            {
+                components.Dispose();
+            }
+            base.Dispose(disposing);
+        }
+
+        #region Windows Form 設計工具產生的程式碼
+
+        /// <summary>
+        /// 此為設計工具支援所需的方法 - 請勿使用程式碼編輯器修改
+        /// 這個方法的內容。
+        /// </summary>
+        private void InitializeComponent()
+        {
+            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.影像ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.openToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.儲存ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.關ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.影像處理ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.轉灰色ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.轉ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.色調ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.saturationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.valueToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.物件偵測ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.對話框ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.工具ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.放大縮小ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.平移ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.反射ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.放大ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.perspectiveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.binaryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.binaryInvToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toZeroToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toZeroInvToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.truncToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.otsuToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.adaptiveThresholdToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuStrip1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            this.SuspendLayout();
+            // 
+            // menuStrip1
+            // 
+            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.影像ToolStripMenuItem,
+            this.影像處理ToolStripMenuItem,
+            this.工具ToolStripMenuItem});
+            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.Size = new System.Drawing.Size(800, 24);
+            this.menuStrip1.TabIndex = 0;
+            this.menuStrip1.Text = "menuStrip1";
+            // 
+            // 影像ToolStripMenuItem
+            // 
+            this.影像ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.openToolStripMenuItem,
+            this.儲存ToolStripMenuItem,
+            this.關ToolStripMenuItem});
+            this.影像ToolStripMenuItem.Name = "影像ToolStripMenuItem";
+            this.影像ToolStripMenuItem.Size = new System.Drawing.Size(43, 20);
+            this.影像ToolStripMenuItem.Text = "影像";
+            // 
+            // openToolStripMenuItem
+            // 
+            this.openToolStripMenuItem.Name = "openToolStripMenuItem";
+            this.openToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.openToolStripMenuItem.Text = "載入圖片";
+            this.openToolStripMenuItem.Click += new System.EventHandler(this.openToolStripMenuItem_Click);
+            // 
+            // 儲存ToolStripMenuItem
+            // 
+            this.儲存ToolStripMenuItem.Name = "儲存ToolStripMenuItem";
+            this.儲存ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.儲存ToolStripMenuItem.Text = "儲存";
+            this.儲存ToolStripMenuItem.Click += new System.EventHandler(this.儲存ToolStripMenuItem_Click);
+            // 
+            // 關ToolStripMenuItem
+            // 
+            this.關ToolStripMenuItem.Name = "關ToolStripMenuItem";
+            this.關ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.關ToolStripMenuItem.Text = "離開";
+            this.關ToolStripMenuItem.Click += new System.EventHandler(this.關ToolStripMenuItem_Click);
+            // 
+            // 影像處理ToolStripMenuItem
+            // 
+            this.影像處理ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.轉灰色ToolStripMenuItem,
+            this.轉ToolStripMenuItem,
+            this.物件偵測ToolStripMenuItem,
+            this.對話框ToolStripMenuItem});
+            this.影像處理ToolStripMenuItem.Name = "影像處理ToolStripMenuItem";
+            this.影像處理ToolStripMenuItem.Size = new System.Drawing.Size(67, 20);
+            this.影像處理ToolStripMenuItem.Text = "影像處理";
+            // 
+            // 轉灰色ToolStripMenuItem
+            // 
+            this.轉灰色ToolStripMenuItem.Name = "轉灰色ToolStripMenuItem";
+            this.轉灰色ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.轉灰色ToolStripMenuItem.Text = "轉Gray";
+            this.轉灰色ToolStripMenuItem.Click += new System.EventHandler(this.轉灰色ToolStripMenuItem_Click);
+            // 
+            // 轉ToolStripMenuItem
+            // 
+            this.轉ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.色調ToolStripMenuItem,
+            this.saturationToolStripMenuItem,
+            this.valueToolStripMenuItem});
+            this.轉ToolStripMenuItem.Name = "轉ToolStripMenuItem";
+            this.轉ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.轉ToolStripMenuItem.Text = "轉HSV";
+            this.轉ToolStripMenuItem.Click += new System.EventHandler(this.轉ToolStripMenuItem_Click);
+            // 
+            // 色調ToolStripMenuItem
+            // 
+            this.色調ToolStripMenuItem.Name = "色調ToolStripMenuItem";
+            this.色調ToolStripMenuItem.Size = new System.Drawing.Size(130, 22);
+            this.色調ToolStripMenuItem.Text = "Hue";
+            this.色調ToolStripMenuItem.Click += new System.EventHandler(this.色調ToolStripMenuItem_Click);
+            // 
+            // saturationToolStripMenuItem
+            // 
+            this.saturationToolStripMenuItem.Name = "saturationToolStripMenuItem";
+            this.saturationToolStripMenuItem.Size = new System.Drawing.Size(130, 22);
+            this.saturationToolStripMenuItem.Text = "saturation";
+            this.saturationToolStripMenuItem.Click += new System.EventHandler(this.saturationToolStripMenuItem_Click);
+            // 
+            // valueToolStripMenuItem
+            // 
+            this.valueToolStripMenuItem.Name = "valueToolStripMenuItem";
+            this.valueToolStripMenuItem.Size = new System.Drawing.Size(130, 22);
+            this.valueToolStripMenuItem.Text = "value";
+            this.valueToolStripMenuItem.Click += new System.EventHandler(this.valueToolStripMenuItem_Click);
+            // 
+            // 物件偵測ToolStripMenuItem
+            // 
+            this.物件偵測ToolStripMenuItem.Name = "物件偵測ToolStripMenuItem";
+            this.物件偵測ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.物件偵測ToolStripMenuItem.Text = "物件偵測";
+            this.物件偵測ToolStripMenuItem.Click += new System.EventHandler(this.物件偵測ToolStripMenuItem_Click);
+            // 
+            // 對話框ToolStripMenuItem
+            // 
+            this.對話框ToolStripMenuItem.Name = "對話框ToolStripMenuItem";
+            this.對話框ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.對話框ToolStripMenuItem.Text = "對話框";
+            this.對話框ToolStripMenuItem.Click += new System.EventHandler(this.對話框ToolStripMenuItem_Click);
+            // 
+            // 工具ToolStripMenuItem
+            // 
+            this.工具ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.放大縮小ToolStripMenuItem,
+            this.平移ToolStripMenuItem,
+            this.反射ToolStripMenuItem,
+            this.放大ToolStripMenuItem,
+            this.perspectiveToolStripMenuItem,
+            this.binaryToolStripMenuItem,
+            this.binaryInvToolStripMenuItem,
+            this.toZeroToolStripMenuItem,
+            this.toZeroInvToolStripMenuItem,
+            this.truncToolStripMenuItem,
+            this.otsuToolStripMenuItem,
+            this.adaptiveThresholdToolStripMenuItem});
+            this.工具ToolStripMenuItem.Name = "工具ToolStripMenuItem";
+            this.工具ToolStripMenuItem.Size = new System.Drawing.Size(43, 20);
+            this.工具ToolStripMenuItem.Text = "工具";
+            // 
+            // 放大縮小ToolStripMenuItem
+            // 
+            this.放大縮小ToolStripMenuItem.Name = "放大縮小ToolStripMenuItem";
+            this.放大縮小ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.放大縮小ToolStripMenuItem.Text = "縮小";
+            this.放大縮小ToolStripMenuItem.Click += new System.EventHandler(this.放大縮小ToolStripMenuItem_Click);
+            // 
+            // 平移ToolStripMenuItem
+            // 
+            this.平移ToolStripMenuItem.Name = "平移ToolStripMenuItem";
+            this.平移ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.平移ToolStripMenuItem.Text = "平移";
+            this.平移ToolStripMenuItem.Click += new System.EventHandler(this.平移ToolStripMenuItem_Click);
+            // 
+            // 反射ToolStripMenuItem
+            // 
+            this.反射ToolStripMenuItem.Name = "反射ToolStripMenuItem";
+            this.反射ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.反射ToolStripMenuItem.Text = "反射";
+            this.反射ToolStripMenuItem.Click += new System.EventHandler(this.反射ToolStripMenuItem_Click);
+            // 
+            // 放大ToolStripMenuItem
+            // 
+            this.放大ToolStripMenuItem.Name = "放大ToolStripMenuItem";
+            this.放大ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.放大ToolStripMenuItem.Text = "放大";
+            this.放大ToolStripMenuItem.Click += new System.EventHandler(this.放大ToolStripMenuItem_Click);
+            // 
+            // perspectiveToolStripMenuItem
+            // 
+            this.perspectiveToolStripMenuItem.Name = "perspectiveToolStripMenuItem";
+            this.perspectiveToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.perspectiveToolStripMenuItem.Text = "perspective";
+            this.perspectiveToolStripMenuItem.Click += new System.EventHandler(this.perspectiveToolStripMenuItem_Click);
+            // 
+            // openFileDialog1
+            // 
+            this.openFileDialog1.FileName = "openFileDialog1";
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Location = new System.Drawing.Point(34, 54);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(329, 287);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 1;
+            this.pictureBox1.TabStop = false;
+            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Location = new System.Drawing.Point(369, 54);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(329, 287);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox2.TabIndex = 2;
+            this.pictureBox2.TabStop = false;
+            // 
+            // binaryToolStripMenuItem
+            // 
+            this.binaryToolStripMenuItem.Name = "binaryToolStripMenuItem";
+            this.binaryToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.binaryToolStripMenuItem.Text = "Binary";
+            this.binaryToolStripMenuItem.Click += new System.EventHandler(this.binaryToolStripMenuItem_Click);
+            // 
+            // binaryInvToolStripMenuItem
+            // 
+            this.binaryInvToolStripMenuItem.Name = "binaryInvToolStripMenuItem";
+            this.binaryInvToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.binaryInvToolStripMenuItem.Text = "binaryInv";
+            this.binaryInvToolStripMenuItem.Click += new System.EventHandler(this.binaryInvToolStripMenuItem_Click);
+            // 
+            // toZeroToolStripMenuItem
+            // 
+            this.toZeroToolStripMenuItem.Name = "toZeroToolStripMenuItem";
+            this.toZeroToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.toZeroToolStripMenuItem.Text = "ToZero";
+            this.toZeroToolStripMenuItem.Click += new System.EventHandler(this.toZeroToolStripMenuItem_Click);
+            // 
+            // toZeroInvToolStripMenuItem
+            // 
+            this.toZeroInvToolStripMenuItem.Name = "toZeroInvToolStripMenuItem";
+            this.toZeroInvToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.toZeroInvToolStripMenuItem.Text = "ToZeroInv";
+            this.toZeroInvToolStripMenuItem.Click += new System.EventHandler(this.toZeroInvToolStripMenuItem_Click);
+            // 
+            // truncToolStripMenuItem
+            // 
+            this.truncToolStripMenuItem.Name = "truncToolStripMenuItem";
+            this.truncToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.truncToolStripMenuItem.Text = "Trunc";
+            this.truncToolStripMenuItem.Click += new System.EventHandler(this.truncToolStripMenuItem_Click);
+            // 
+            // otsuToolStripMenuItem
+            // 
+            this.otsuToolStripMenuItem.Name = "otsuToolStripMenuItem";
+            this.otsuToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.otsuToolStripMenuItem.Text = "Otsu";
+            this.otsuToolStripMenuItem.Click += new System.EventHandler(this.otsuToolStripMenuItem_Click);
+            // 
+            // adaptiveThresholdToolStripMenuItem
+            // 
+            this.adaptiveThresholdToolStripMenuItem.Name = "adaptiveThresholdToolStripMenuItem";
+            this.adaptiveThresholdToolStripMenuItem.Size = new System.Drawing.Size(181, 22);
+            this.adaptiveThresholdToolStripMenuItem.Text = "AdaptiveThreshold";
+            this.adaptiveThresholdToolStripMenuItem.Click += new System.EventHandler(this.adaptiveThresholdToolStripMenuItem_Click);
+            // 
+            // Form1
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.pictureBox2);
+            this.Controls.Add(this.pictureBox1);
+            this.Controls.Add(this.menuStrip1);
+            this.MainMenuStrip = this.menuStrip1;
+            this.Name = "Form1";
+            this.Text = "Form1";
+            this.menuStrip1.ResumeLayout(false);
+            this.menuStrip1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            this.ResumeLayout(false);
+            this.PerformLayout();
+
+        }
+
+        #endregion
+
+        private System.Windows.Forms.MenuStrip menuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem 影像ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem openToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 儲存ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 關ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 影像處理ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 轉灰色ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 轉ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 色調ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem saturationToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem valueToolStripMenuItem;
+        private System.Windows.Forms.OpenFileDialog openFileDialog1;
+        private System.Windows.Forms.SaveFileDialog saveFileDialog1;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.ToolStripMenuItem 物件偵測ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 對話框ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 工具ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 放大縮小ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 平移ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 反射ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 放大ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem perspectiveToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem binaryToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem binaryInvToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem toZeroToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem toZeroInvToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem truncToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem otsuToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem adaptiveThresholdToolStripMenuItem;
+    }
+}
+

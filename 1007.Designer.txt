@@ -1,0 +1,899 @@
+﻿namespace _0923
+{
+    partial class Form1
+    {
+        /// <summary>
+        /// 設計工具所需的變數。
+        /// </summary>
+        private System.ComponentModel.IContainer components = null;
+
+        /// <summary>
+        /// 清除任何使用中的資源。
+        /// </summary>
+        /// <param name="disposing">如果應該處置受控資源則為 true，否則為 false。</param>
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing && (components != null))
+            {
+                components.Dispose();
+            }
+            base.Dispose(disposing);
+        }
+
+        #region Windows Form 設計工具產生的程式碼
+
+        /// <summary>
+        /// 此為設計工具支援所需的方法 - 請勿使用程式碼編輯器修改
+        /// 這個方法的內容。
+        /// </summary>
+        private void InitializeComponent()
+        {
+            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.影像ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.openToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.儲存ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.關ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.影像處理ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.轉灰色ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.轉ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.色調ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.saturationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.valueToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.物件偵測ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.對話框ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.工具ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.放大縮小ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.平移ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.反射ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.放大ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.perspectiveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.binaryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.binaryInvToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toZeroToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toZeroInvToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.truncToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.otsuToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.adaptiveThresholdToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.templateMatchToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.coeffCorrToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.coeffCorrNormToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.偵測多個ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.morphologyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.erolationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.dilationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.openingToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.closingToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.gradientToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.filterToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.filter2DToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem4 = new System.Windows.Forms.ToolStripMenuItem();
+            this.blurToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.gaussainToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.mediamToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.biToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.sobeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.gxToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.gxToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.gyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.gxyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.讀卡機ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.cannyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.findCoutoursToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.contourToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.findContourToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.momentsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.perimeterToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.找圖點ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.histgramsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.histgramsToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.bToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.gToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.rToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.bcdfToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.遮罩ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.equalzationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.claheToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.comparehistToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.lineToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.lineToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.plineToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.數值 = new System.Windows.Forms.Label();
+            this.trackBar1 = new System.Windows.Forms.TrackBar();
+            this.min = new System.Windows.Forms.Label();
+            this.max = new System.Windows.Forms.Label();
+            this.trackBar2 = new System.Windows.Forms.TrackBar();
+            this.circleToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuStrip1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBar2)).BeginInit();
+            this.SuspendLayout();
+            // 
+            // menuStrip1
+            // 
+            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.影像ToolStripMenuItem,
+            this.影像處理ToolStripMenuItem,
+            this.工具ToolStripMenuItem,
+            this.templateMatchToolStripMenuItem,
+            this.morphologyToolStripMenuItem,
+            this.filterToolStripMenuItem,
+            this.sobeToolStripMenuItem,
+            this.contourToolStripMenuItem,
+            this.histgramsToolStripMenuItem,
+            this.lineToolStripMenuItem});
+            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.Size = new System.Drawing.Size(1202, 24);
+            this.menuStrip1.TabIndex = 0;
+            this.menuStrip1.Text = "menuStrip1";
+            // 
+            // 影像ToolStripMenuItem
+            // 
+            this.影像ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.openToolStripMenuItem,
+            this.儲存ToolStripMenuItem,
+            this.關ToolStripMenuItem});
+            this.影像ToolStripMenuItem.Name = "影像ToolStripMenuItem";
+            this.影像ToolStripMenuItem.Size = new System.Drawing.Size(43, 20);
+            this.影像ToolStripMenuItem.Text = "影像";
+            // 
+            // openToolStripMenuItem
+            // 
+            this.openToolStripMenuItem.Name = "openToolStripMenuItem";
+            this.openToolStripMenuItem.Size = new System.Drawing.Size(122, 22);
+            this.openToolStripMenuItem.Text = "載入圖片";
+            this.openToolStripMenuItem.Click += new System.EventHandler(this.openToolStripMenuItem_Click);
+            // 
+            // 儲存ToolStripMenuItem
+            // 
+            this.儲存ToolStripMenuItem.Name = "儲存ToolStripMenuItem";
+            this.儲存ToolStripMenuItem.Size = new System.Drawing.Size(122, 22);
+            this.儲存ToolStripMenuItem.Text = "儲存";
+            this.儲存ToolStripMenuItem.Click += new System.EventHandler(this.儲存ToolStripMenuItem_Click);
+            // 
+            // 關ToolStripMenuItem
+            // 
+            this.關ToolStripMenuItem.Name = "關ToolStripMenuItem";
+            this.關ToolStripMenuItem.Size = new System.Drawing.Size(122, 22);
+            this.關ToolStripMenuItem.Text = "離開";
+            this.關ToolStripMenuItem.Click += new System.EventHandler(this.關ToolStripMenuItem_Click);
+            // 
+            // 影像處理ToolStripMenuItem
+            // 
+            this.影像處理ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.轉灰色ToolStripMenuItem,
+            this.轉ToolStripMenuItem,
+            this.物件偵測ToolStripMenuItem,
+            this.對話框ToolStripMenuItem});
+            this.影像處理ToolStripMenuItem.Name = "影像處理ToolStripMenuItem";
+            this.影像處理ToolStripMenuItem.Size = new System.Drawing.Size(67, 20);
+            this.影像處理ToolStripMenuItem.Text = "影像處理";
+            // 
+            // 轉灰色ToolStripMenuItem
+            // 
+            this.轉灰色ToolStripMenuItem.Name = "轉灰色ToolStripMenuItem";
+            this.轉灰色ToolStripMenuItem.Size = new System.Drawing.Size(122, 22);
+            this.轉灰色ToolStripMenuItem.Text = "轉Gray";
+            this.轉灰色ToolStripMenuItem.Click += new System.EventHandler(this.轉灰色ToolStripMenuItem_Click);
+            // 
+            // 轉ToolStripMenuItem
+            // 
+            this.轉ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.色調ToolStripMenuItem,
+            this.saturationToolStripMenuItem,
+            this.valueToolStripMenuItem});
+            this.轉ToolStripMenuItem.Name = "轉ToolStripMenuItem";
+            this.轉ToolStripMenuItem.Size = new System.Drawing.Size(122, 22);
+            this.轉ToolStripMenuItem.Text = "轉HSV";
+            this.轉ToolStripMenuItem.Click += new System.EventHandler(this.轉ToolStripMenuItem_Click);
+            // 
+            // 色調ToolStripMenuItem
+            // 
+            this.色調ToolStripMenuItem.Name = "色調ToolStripMenuItem";
+            this.色調ToolStripMenuItem.Size = new System.Drawing.Size(130, 22);
+            this.色調ToolStripMenuItem.Text = "Hue";
+            this.色調ToolStripMenuItem.Click += new System.EventHandler(this.色調ToolStripMenuItem_Click);
+            // 
+            // saturationToolStripMenuItem
+            // 
+            this.saturationToolStripMenuItem.Name = "saturationToolStripMenuItem";
+            this.saturationToolStripMenuItem.Size = new System.Drawing.Size(130, 22);
+            this.saturationToolStripMenuItem.Text = "saturation";
+            this.saturationToolStripMenuItem.Click += new System.EventHandler(this.saturationToolStripMenuItem_Click);
+            // 
+            // valueToolStripMenuItem
+            // 
+            this.valueToolStripMenuItem.Name = "valueToolStripMenuItem";
+            this.valueToolStripMenuItem.Size = new System.Drawing.Size(130, 22);
+            this.valueToolStripMenuItem.Text = "value";
+            this.valueToolStripMenuItem.Click += new System.EventHandler(this.valueToolStripMenuItem_Click);
+            // 
+            // 物件偵測ToolStripMenuItem
+            // 
+            this.物件偵測ToolStripMenuItem.Name = "物件偵測ToolStripMenuItem";
+            this.物件偵測ToolStripMenuItem.Size = new System.Drawing.Size(122, 22);
+            this.物件偵測ToolStripMenuItem.Text = "物件偵測";
+            this.物件偵測ToolStripMenuItem.Click += new System.EventHandler(this.物件偵測ToolStripMenuItem_Click);
+            // 
+            // 對話框ToolStripMenuItem
+            // 
+            this.對話框ToolStripMenuItem.Name = "對話框ToolStripMenuItem";
+            this.對話框ToolStripMenuItem.Size = new System.Drawing.Size(122, 22);
+            this.對話框ToolStripMenuItem.Text = "對話框";
+            this.對話框ToolStripMenuItem.Click += new System.EventHandler(this.對話框ToolStripMenuItem_Click);
+            // 
+            // 工具ToolStripMenuItem
+            // 
+            this.工具ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.放大縮小ToolStripMenuItem,
+            this.平移ToolStripMenuItem,
+            this.反射ToolStripMenuItem,
+            this.放大ToolStripMenuItem,
+            this.perspectiveToolStripMenuItem,
+            this.binaryToolStripMenuItem,
+            this.binaryInvToolStripMenuItem,
+            this.toZeroToolStripMenuItem,
+            this.toZeroInvToolStripMenuItem,
+            this.truncToolStripMenuItem,
+            this.otsuToolStripMenuItem,
+            this.adaptiveThresholdToolStripMenuItem});
+            this.工具ToolStripMenuItem.Name = "工具ToolStripMenuItem";
+            this.工具ToolStripMenuItem.Size = new System.Drawing.Size(43, 20);
+            this.工具ToolStripMenuItem.Text = "工具";
+            // 
+            // 放大縮小ToolStripMenuItem
+            // 
+            this.放大縮小ToolStripMenuItem.Name = "放大縮小ToolStripMenuItem";
+            this.放大縮小ToolStripMenuItem.Size = new System.Drawing.Size(181, 22);
+            this.放大縮小ToolStripMenuItem.Text = "縮小";
+            this.放大縮小ToolStripMenuItem.Click += new System.EventHandler(this.放大縮小ToolStripMenuItem_Click);
+            // 
+            // 平移ToolStripMenuItem
+            // 
+            this.平移ToolStripMenuItem.Name = "平移ToolStripMenuItem";
+            this.平移ToolStripMenuItem.Size = new System.Drawing.Size(181, 22);
+            this.平移ToolStripMenuItem.Text = "平移";
+            this.平移ToolStripMenuItem.Click += new System.EventHandler(this.平移ToolStripMenuItem_Click);
+            // 
+            // 反射ToolStripMenuItem
+            // 
+            this.反射ToolStripMenuItem.Name = "反射ToolStripMenuItem";
+            this.反射ToolStripMenuItem.Size = new System.Drawing.Size(181, 22);
+            this.反射ToolStripMenuItem.Text = "反射";
+            this.反射ToolStripMenuItem.Click += new System.EventHandler(this.反射ToolStripMenuItem_Click);
+            // 
+            // 放大ToolStripMenuItem
+            // 
+            this.放大ToolStripMenuItem.Name = "放大ToolStripMenuItem";
+            this.放大ToolStripMenuItem.Size = new System.Drawing.Size(181, 22);
+            this.放大ToolStripMenuItem.Text = "放大";
+            this.放大ToolStripMenuItem.Click += new System.EventHandler(this.放大ToolStripMenuItem_Click);
+            // 
+            // perspectiveToolStripMenuItem
+            // 
+            this.perspectiveToolStripMenuItem.Name = "perspectiveToolStripMenuItem";
+            this.perspectiveToolStripMenuItem.Size = new System.Drawing.Size(181, 22);
+            this.perspectiveToolStripMenuItem.Text = "perspective";
+            this.perspectiveToolStripMenuItem.Click += new System.EventHandler(this.perspectiveToolStripMenuItem_Click);
+            // 
+            // binaryToolStripMenuItem
+            // 
+            this.binaryToolStripMenuItem.Name = "binaryToolStripMenuItem";
+            this.binaryToolStripMenuItem.Size = new System.Drawing.Size(181, 22);
+            this.binaryToolStripMenuItem.Text = "Binary";
+            this.binaryToolStripMenuItem.Click += new System.EventHandler(this.binaryToolStripMenuItem_Click);
+            // 
+            // binaryInvToolStripMenuItem
+            // 
+            this.binaryInvToolStripMenuItem.Name = "binaryInvToolStripMenuItem";
+            this.binaryInvToolStripMenuItem.Size = new System.Drawing.Size(181, 22);
+            this.binaryInvToolStripMenuItem.Text = "binaryInv";
+            this.binaryInvToolStripMenuItem.Click += new System.EventHandler(this.binaryInvToolStripMenuItem_Click);
+            // 
+            // toZeroToolStripMenuItem
+            // 
+            this.toZeroToolStripMenuItem.Name = "toZeroToolStripMenuItem";
+            this.toZeroToolStripMenuItem.Size = new System.Drawing.Size(181, 22);
+            this.toZeroToolStripMenuItem.Text = "ToZero";
+            this.toZeroToolStripMenuItem.Click += new System.EventHandler(this.toZeroToolStripMenuItem_Click);
+            // 
+            // toZeroInvToolStripMenuItem
+            // 
+            this.toZeroInvToolStripMenuItem.Name = "toZeroInvToolStripMenuItem";
+            this.toZeroInvToolStripMenuItem.Size = new System.Drawing.Size(181, 22);
+            this.toZeroInvToolStripMenuItem.Text = "ToZeroInv";
+            this.toZeroInvToolStripMenuItem.Click += new System.EventHandler(this.toZeroInvToolStripMenuItem_Click);
+            // 
+            // truncToolStripMenuItem
+            // 
+            this.truncToolStripMenuItem.Name = "truncToolStripMenuItem";
+            this.truncToolStripMenuItem.Size = new System.Drawing.Size(181, 22);
+            this.truncToolStripMenuItem.Text = "Trunc";
+            this.truncToolStripMenuItem.Click += new System.EventHandler(this.truncToolStripMenuItem_Click);
+            // 
+            // otsuToolStripMenuItem
+            // 
+            this.otsuToolStripMenuItem.Name = "otsuToolStripMenuItem";
+            this.otsuToolStripMenuItem.Size = new System.Drawing.Size(181, 22);
+            this.otsuToolStripMenuItem.Text = "Otsu";
+            this.otsuToolStripMenuItem.Click += new System.EventHandler(this.otsuToolStripMenuItem_Click);
+            // 
+            // adaptiveThresholdToolStripMenuItem
+            // 
+            this.adaptiveThresholdToolStripMenuItem.Name = "adaptiveThresholdToolStripMenuItem";
+            this.adaptiveThresholdToolStripMenuItem.Size = new System.Drawing.Size(181, 22);
+            this.adaptiveThresholdToolStripMenuItem.Text = "AdaptiveThreshold";
+            this.adaptiveThresholdToolStripMenuItem.Click += new System.EventHandler(this.adaptiveThresholdToolStripMenuItem_Click);
+            // 
+            // templateMatchToolStripMenuItem
+            // 
+            this.templateMatchToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.coeffCorrToolStripMenuItem,
+            this.coeffCorrNormToolStripMenuItem,
+            this.偵測多個ToolStripMenuItem});
+            this.templateMatchToolStripMenuItem.Name = "templateMatchToolStripMenuItem";
+            this.templateMatchToolStripMenuItem.Size = new System.Drawing.Size(109, 20);
+            this.templateMatchToolStripMenuItem.Text = "TemplateMatch";
+            // 
+            // coeffCorrToolStripMenuItem
+            // 
+            this.coeffCorrToolStripMenuItem.Name = "coeffCorrToolStripMenuItem";
+            this.coeffCorrToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.coeffCorrToolStripMenuItem.Text = "Coeff_Corr";
+            this.coeffCorrToolStripMenuItem.Click += new System.EventHandler(this.coeffCorrToolStripMenuItem_Click);
+            // 
+            // coeffCorrNormToolStripMenuItem
+            // 
+            this.coeffCorrNormToolStripMenuItem.Name = "coeffCorrNormToolStripMenuItem";
+            this.coeffCorrNormToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.coeffCorrNormToolStripMenuItem.Text = "Coeff_CorrNorm";
+            this.coeffCorrNormToolStripMenuItem.Click += new System.EventHandler(this.coeffCorrNormToolStripMenuItem_Click);
+            // 
+            // 偵測多個ToolStripMenuItem
+            // 
+            this.偵測多個ToolStripMenuItem.Name = "偵測多個ToolStripMenuItem";
+            this.偵測多個ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.偵測多個ToolStripMenuItem.Text = "偵測多個";
+            this.偵測多個ToolStripMenuItem.Click += new System.EventHandler(this.偵測多個ToolStripMenuItem_Click);
+            // 
+            // morphologyToolStripMenuItem
+            // 
+            this.morphologyToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.erolationToolStripMenuItem,
+            this.dilationToolStripMenuItem,
+            this.openingToolStripMenuItem,
+            this.closingToolStripMenuItem,
+            this.gradientToolStripMenuItem});
+            this.morphologyToolStripMenuItem.Name = "morphologyToolStripMenuItem";
+            this.morphologyToolStripMenuItem.Size = new System.Drawing.Size(90, 20);
+            this.morphologyToolStripMenuItem.Text = "morphology";
+            // 
+            // erolationToolStripMenuItem
+            // 
+            this.erolationToolStripMenuItem.Name = "erolationToolStripMenuItem";
+            this.erolationToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.erolationToolStripMenuItem.Text = "erolation";
+            this.erolationToolStripMenuItem.Click += new System.EventHandler(this.erolationToolStripMenuItem_Click);
+            // 
+            // dilationToolStripMenuItem
+            // 
+            this.dilationToolStripMenuItem.Name = "dilationToolStripMenuItem";
+            this.dilationToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.dilationToolStripMenuItem.Text = "dilation";
+            this.dilationToolStripMenuItem.Click += new System.EventHandler(this.dilationToolStripMenuItem_Click);
+            // 
+            // openingToolStripMenuItem
+            // 
+            this.openingToolStripMenuItem.Name = "openingToolStripMenuItem";
+            this.openingToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.openingToolStripMenuItem.Text = "opening";
+            this.openingToolStripMenuItem.Click += new System.EventHandler(this.openingToolStripMenuItem_Click);
+            // 
+            // closingToolStripMenuItem
+            // 
+            this.closingToolStripMenuItem.Name = "closingToolStripMenuItem";
+            this.closingToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.closingToolStripMenuItem.Text = "closing";
+            this.closingToolStripMenuItem.Click += new System.EventHandler(this.closingToolStripMenuItem_Click);
+            // 
+            // gradientToolStripMenuItem
+            // 
+            this.gradientToolStripMenuItem.Name = "gradientToolStripMenuItem";
+            this.gradientToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.gradientToolStripMenuItem.Text = "gradient";
+            this.gradientToolStripMenuItem.Click += new System.EventHandler(this.gradientToolStripMenuItem_Click);
+            // 
+            // filterToolStripMenuItem
+            // 
+            this.filterToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.filter2DToolStripMenuItem,
+            this.blurToolStripMenuItem,
+            this.gaussainToolStripMenuItem,
+            this.mediamToolStripMenuItem,
+            this.biToolStripMenuItem});
+            this.filterToolStripMenuItem.Name = "filterToolStripMenuItem";
+            this.filterToolStripMenuItem.Size = new System.Drawing.Size(46, 20);
+            this.filterToolStripMenuItem.Text = "Filter";
+            // 
+            // filter2DToolStripMenuItem
+            // 
+            this.filter2DToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripMenuItem2,
+            this.toolStripMenuItem3,
+            this.toolStripMenuItem4});
+            this.filter2DToolStripMenuItem.Name = "filter2DToolStripMenuItem";
+            this.filter2DToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.filter2DToolStripMenuItem.Text = "Filter2D";
+            // 
+            // toolStripMenuItem2
+            // 
+            this.toolStripMenuItem2.Name = "toolStripMenuItem2";
+            this.toolStripMenuItem2.Size = new System.Drawing.Size(93, 22);
+            this.toolStripMenuItem2.Text = "3*3";
+            this.toolStripMenuItem2.Click += new System.EventHandler(this.toolStripMenuItem2_Click);
+            // 
+            // toolStripMenuItem3
+            // 
+            this.toolStripMenuItem3.Name = "toolStripMenuItem3";
+            this.toolStripMenuItem3.Size = new System.Drawing.Size(93, 22);
+            this.toolStripMenuItem3.Text = "5*5";
+            this.toolStripMenuItem3.Click += new System.EventHandler(this.toolStripMenuItem3_Click);
+            // 
+            // toolStripMenuItem4
+            // 
+            this.toolStripMenuItem4.Name = "toolStripMenuItem4";
+            this.toolStripMenuItem4.Size = new System.Drawing.Size(93, 22);
+            this.toolStripMenuItem4.Text = "7*7";
+            this.toolStripMenuItem4.Click += new System.EventHandler(this.toolStripMenuItem4_Click);
+            // 
+            // blurToolStripMenuItem
+            // 
+            this.blurToolStripMenuItem.Name = "blurToolStripMenuItem";
+            this.blurToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.blurToolStripMenuItem.Text = "Blur";
+            this.blurToolStripMenuItem.Click += new System.EventHandler(this.blurToolStripMenuItem_Click);
+            // 
+            // gaussainToolStripMenuItem
+            // 
+            this.gaussainToolStripMenuItem.Name = "gaussainToolStripMenuItem";
+            this.gaussainToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.gaussainToolStripMenuItem.Text = "Gaussain";
+            this.gaussainToolStripMenuItem.Click += new System.EventHandler(this.gaussainToolStripMenuItem_Click);
+            // 
+            // mediamToolStripMenuItem
+            // 
+            this.mediamToolStripMenuItem.Name = "mediamToolStripMenuItem";
+            this.mediamToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.mediamToolStripMenuItem.Text = "mediam";
+            this.mediamToolStripMenuItem.Click += new System.EventHandler(this.mediamToolStripMenuItem_Click);
+            // 
+            // biToolStripMenuItem
+            // 
+            this.biToolStripMenuItem.Name = "biToolStripMenuItem";
+            this.biToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.biToolStripMenuItem.Text = "bi";
+            this.biToolStripMenuItem.Click += new System.EventHandler(this.biToolStripMenuItem_Click);
+            // 
+            // sobeToolStripMenuItem
+            // 
+            this.sobeToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.gxToolStripMenuItem,
+            this.讀卡機ToolStripMenuItem,
+            this.cannyToolStripMenuItem,
+            this.findCoutoursToolStripMenuItem});
+            this.sobeToolStripMenuItem.Name = "sobeToolStripMenuItem";
+            this.sobeToolStripMenuItem.Size = new System.Drawing.Size(49, 20);
+            this.sobeToolStripMenuItem.Text = "edge";
+            // 
+            // gxToolStripMenuItem
+            // 
+            this.gxToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.gxToolStripMenuItem1,
+            this.gyToolStripMenuItem,
+            this.gxyToolStripMenuItem});
+            this.gxToolStripMenuItem.Name = "gxToolStripMenuItem";
+            this.gxToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.gxToolStripMenuItem.Text = "sobe";
+            this.gxToolStripMenuItem.Click += new System.EventHandler(this.gxToolStripMenuItem_Click);
+            // 
+            // gxToolStripMenuItem1
+            // 
+            this.gxToolStripMenuItem1.Name = "gxToolStripMenuItem1";
+            this.gxToolStripMenuItem1.Size = new System.Drawing.Size(94, 22);
+            this.gxToolStripMenuItem1.Text = "gx";
+            // 
+            // gyToolStripMenuItem
+            // 
+            this.gyToolStripMenuItem.Name = "gyToolStripMenuItem";
+            this.gyToolStripMenuItem.Size = new System.Drawing.Size(94, 22);
+            this.gyToolStripMenuItem.Text = "gy";
+            this.gyToolStripMenuItem.Click += new System.EventHandler(this.gyToolStripMenuItem_Click);
+            // 
+            // gxyToolStripMenuItem
+            // 
+            this.gxyToolStripMenuItem.Name = "gxyToolStripMenuItem";
+            this.gxyToolStripMenuItem.Size = new System.Drawing.Size(94, 22);
+            this.gxyToolStripMenuItem.Text = "gxy";
+            this.gxyToolStripMenuItem.Click += new System.EventHandler(this.gxyToolStripMenuItem_Click);
+            // 
+            // 讀卡機ToolStripMenuItem
+            // 
+            this.讀卡機ToolStripMenuItem.Name = "讀卡機ToolStripMenuItem";
+            this.讀卡機ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.讀卡機ToolStripMenuItem.Text = "讀卡機";
+            this.讀卡機ToolStripMenuItem.Click += new System.EventHandler(this.讀卡機ToolStripMenuItem_Click);
+            // 
+            // cannyToolStripMenuItem
+            // 
+            this.cannyToolStripMenuItem.Name = "cannyToolStripMenuItem";
+            this.cannyToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.cannyToolStripMenuItem.Text = "Canny";
+            this.cannyToolStripMenuItem.Click += new System.EventHandler(this.cannyToolStripMenuItem_Click);
+            // 
+            // findCoutoursToolStripMenuItem
+            // 
+            this.findCoutoursToolStripMenuItem.Name = "findCoutoursToolStripMenuItem";
+            this.findCoutoursToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.findCoutoursToolStripMenuItem.Text = "FindCoutours";
+            this.findCoutoursToolStripMenuItem.Click += new System.EventHandler(this.findCoutoursToolStripMenuItem_Click);
+            // 
+            // contourToolStripMenuItem
+            // 
+            this.contourToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.findContourToolStripMenuItem,
+            this.momentsToolStripMenuItem,
+            this.perimeterToolStripMenuItem,
+            this.找圖點ToolStripMenuItem});
+            this.contourToolStripMenuItem.Name = "contourToolStripMenuItem";
+            this.contourToolStripMenuItem.Size = new System.Drawing.Size(65, 20);
+            this.contourToolStripMenuItem.Text = "Contour";
+            // 
+            // findContourToolStripMenuItem
+            // 
+            this.findContourToolStripMenuItem.Name = "findContourToolStripMenuItem";
+            this.findContourToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.findContourToolStripMenuItem.Text = "FindContour";
+            this.findContourToolStripMenuItem.Click += new System.EventHandler(this.findContourToolStripMenuItem_Click);
+            // 
+            // momentsToolStripMenuItem
+            // 
+            this.momentsToolStripMenuItem.Name = "momentsToolStripMenuItem";
+            this.momentsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.momentsToolStripMenuItem.Text = "Moments";
+            this.momentsToolStripMenuItem.Click += new System.EventHandler(this.momentsToolStripMenuItem_Click);
+            // 
+            // perimeterToolStripMenuItem
+            // 
+            this.perimeterToolStripMenuItem.Name = "perimeterToolStripMenuItem";
+            this.perimeterToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.perimeterToolStripMenuItem.Text = "Perimeter";
+            this.perimeterToolStripMenuItem.Click += new System.EventHandler(this.perimeterToolStripMenuItem_Click);
+            // 
+            // 找圖點ToolStripMenuItem
+            // 
+            this.找圖點ToolStripMenuItem.Name = "找圖點ToolStripMenuItem";
+            this.找圖點ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.找圖點ToolStripMenuItem.Text = "找圖點";
+            this.找圖點ToolStripMenuItem.Click += new System.EventHandler(this.找圖點ToolStripMenuItem_Click);
+            // 
+            // histgramsToolStripMenuItem
+            // 
+            this.histgramsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.histgramsToolStripMenuItem1,
+            this.遮罩ToolStripMenuItem,
+            this.equalzationToolStripMenuItem,
+            this.claheToolStripMenuItem,
+            this.comparehistToolStripMenuItem});
+            this.histgramsToolStripMenuItem.Name = "histgramsToolStripMenuItem";
+            this.histgramsToolStripMenuItem.Size = new System.Drawing.Size(75, 20);
+            this.histgramsToolStripMenuItem.Text = "Histgrams";
+            // 
+            // histgramsToolStripMenuItem1
+            // 
+            this.histgramsToolStripMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.bToolStripMenuItem,
+            this.gToolStripMenuItem,
+            this.rToolStripMenuItem,
+            this.bcdfToolStripMenuItem});
+            this.histgramsToolStripMenuItem1.Name = "histgramsToolStripMenuItem1";
+            this.histgramsToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.histgramsToolStripMenuItem1.Text = "Histgrams";
+            this.histgramsToolStripMenuItem1.Click += new System.EventHandler(this.histgramsToolStripMenuItem1_Click);
+            // 
+            // bToolStripMenuItem
+            // 
+            this.bToolStripMenuItem.Name = "bToolStripMenuItem";
+            this.bToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.bToolStripMenuItem.Text = "B";
+            this.bToolStripMenuItem.Click += new System.EventHandler(this.bToolStripMenuItem_Click);
+            // 
+            // gToolStripMenuItem
+            // 
+            this.gToolStripMenuItem.Name = "gToolStripMenuItem";
+            this.gToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.gToolStripMenuItem.Text = "G";
+            this.gToolStripMenuItem.Click += new System.EventHandler(this.gToolStripMenuItem_Click);
+            // 
+            // rToolStripMenuItem
+            // 
+            this.rToolStripMenuItem.Name = "rToolStripMenuItem";
+            this.rToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.rToolStripMenuItem.Text = "R";
+            this.rToolStripMenuItem.Click += new System.EventHandler(this.rToolStripMenuItem_Click);
+            // 
+            // bcdfToolStripMenuItem
+            // 
+            this.bcdfToolStripMenuItem.Name = "bcdfToolStripMenuItem";
+            this.bcdfToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.bcdfToolStripMenuItem.Text = "B+cdf";
+            this.bcdfToolStripMenuItem.Click += new System.EventHandler(this.bcdfToolStripMenuItem_Click);
+            // 
+            // 遮罩ToolStripMenuItem
+            // 
+            this.遮罩ToolStripMenuItem.Name = "遮罩ToolStripMenuItem";
+            this.遮罩ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.遮罩ToolStripMenuItem.Text = "遮罩";
+            this.遮罩ToolStripMenuItem.Click += new System.EventHandler(this.遮罩ToolStripMenuItem_Click);
+            // 
+            // equalzationToolStripMenuItem
+            // 
+            this.equalzationToolStripMenuItem.Name = "equalzationToolStripMenuItem";
+            this.equalzationToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.equalzationToolStripMenuItem.Text = "Equalzation";
+            this.equalzationToolStripMenuItem.Click += new System.EventHandler(this.equalzationToolStripMenuItem_Click);
+            // 
+            // claheToolStripMenuItem
+            // 
+            this.claheToolStripMenuItem.Name = "claheToolStripMenuItem";
+            this.claheToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.claheToolStripMenuItem.Text = "clahe";
+            this.claheToolStripMenuItem.Click += new System.EventHandler(this.claheToolStripMenuItem_Click);
+            // 
+            // comparehistToolStripMenuItem
+            // 
+            this.comparehistToolStripMenuItem.Name = "comparehistToolStripMenuItem";
+            this.comparehistToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.comparehistToolStripMenuItem.Text = "comparehist";
+            this.comparehistToolStripMenuItem.Click += new System.EventHandler(this.comparehistToolStripMenuItem_Click);
+            // 
+            // lineToolStripMenuItem
+            // 
+            this.lineToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.lineToolStripMenuItem1,
+            this.plineToolStripMenuItem,
+            this.circleToolStripMenuItem});
+            this.lineToolStripMenuItem.Name = "lineToolStripMenuItem";
+            this.lineToolStripMenuItem.Size = new System.Drawing.Size(76, 20);
+            this.lineToolStripMenuItem.Text = "houghline";
+            // 
+            // lineToolStripMenuItem1
+            // 
+            this.lineToolStripMenuItem1.Name = "lineToolStripMenuItem1";
+            this.lineToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.lineToolStripMenuItem1.Text = "line";
+            this.lineToolStripMenuItem1.Click += new System.EventHandler(this.lineToolStripMenuItem1_Click);
+            // 
+            // plineToolStripMenuItem
+            // 
+            this.plineToolStripMenuItem.Name = "plineToolStripMenuItem";
+            this.plineToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.plineToolStripMenuItem.Text = "Pline";
+            this.plineToolStripMenuItem.Click += new System.EventHandler(this.plineToolStripMenuItem_Click);
+            // 
+            // openFileDialog1
+            // 
+            this.openFileDialog1.FileName = "openFileDialog1";
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Location = new System.Drawing.Point(34, 54);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(536, 426);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 1;
+            this.pictureBox1.TabStop = false;
+            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
+            this.pictureBox1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pictureBox1_MouseDown);
+            this.pictureBox1.MouseUp += new System.Windows.Forms.MouseEventHandler(this.pictureBox1_MouseUp);
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Location = new System.Drawing.Point(576, 54);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(539, 426);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox2.TabIndex = 2;
+            this.pictureBox2.TabStop = false;
+            // 
+            // textBox1
+            // 
+            this.textBox1.Font = new System.Drawing.Font("新細明體", 20F);
+            this.textBox1.Location = new System.Drawing.Point(108, 521);
+            this.textBox1.Multiline = true;
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(100, 38);
+            this.textBox1.TabIndex = 3;
+            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+            // 
+            // 數值
+            // 
+            this.數值.AutoSize = true;
+            this.數值.Font = new System.Drawing.Font("新細明體", 20F);
+            this.數值.Location = new System.Drawing.Point(29, 524);
+            this.數值.Name = "數值";
+            this.數值.Size = new System.Drawing.Size(73, 27);
+            this.數值.TabIndex = 4;
+            this.數值.Text = "數值:";
+            // 
+            // trackBar1
+            // 
+            this.trackBar1.Location = new System.Drawing.Point(624, 533);
+            this.trackBar1.Maximum = 255;
+            this.trackBar1.Name = "trackBar1";
+            this.trackBar1.Size = new System.Drawing.Size(214, 45);
+            this.trackBar1.SmallChange = 100;
+            this.trackBar1.TabIndex = 5;
+            this.trackBar1.Scroll += new System.EventHandler(this.trackBar1_Scroll);
+            // 
+            // min
+            // 
+            this.min.AutoSize = true;
+            this.min.Font = new System.Drawing.Font("新細明體", 15F);
+            this.min.Location = new System.Drawing.Point(554, 551);
+            this.min.Name = "min";
+            this.min.Size = new System.Drawing.Size(38, 20);
+            this.min.TabIndex = 6;
+            this.min.Text = "min";
+            // 
+            // max
+            // 
+            this.max.AutoSize = true;
+            this.max.Font = new System.Drawing.Font("新細明體", 15F);
+            this.max.Location = new System.Drawing.Point(870, 551);
+            this.max.Name = "max";
+            this.max.Size = new System.Drawing.Size(41, 20);
+            this.max.TabIndex = 7;
+            this.max.Text = "max";
+            // 
+            // trackBar2
+            // 
+            this.trackBar2.Location = new System.Drawing.Point(932, 537);
+            this.trackBar2.Maximum = 255;
+            this.trackBar2.Name = "trackBar2";
+            this.trackBar2.Size = new System.Drawing.Size(214, 45);
+            this.trackBar2.TabIndex = 8;
+            this.trackBar2.Value = 200;
+            this.trackBar2.Scroll += new System.EventHandler(this.trackBar2_Scroll);
+            // 
+            // circleToolStripMenuItem
+            // 
+            this.circleToolStripMenuItem.Name = "circleToolStripMenuItem";
+            this.circleToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.circleToolStripMenuItem.Text = "Circle";
+            this.circleToolStripMenuItem.Click += new System.EventHandler(this.circleToolStripMenuItem_Click);
+            // 
+            // Form1
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.ClientSize = new System.Drawing.Size(1202, 628);
+            this.Controls.Add(this.trackBar2);
+            this.Controls.Add(this.max);
+            this.Controls.Add(this.min);
+            this.Controls.Add(this.trackBar1);
+            this.Controls.Add(this.數值);
+            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.pictureBox2);
+            this.Controls.Add(this.pictureBox1);
+            this.Controls.Add(this.menuStrip1);
+            this.MainMenuStrip = this.menuStrip1;
+            this.Name = "Form1";
+            this.Text = "Form1";
+            this.Load += new System.EventHandler(this.Form1_Load);
+            this.menuStrip1.ResumeLayout(false);
+            this.menuStrip1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBar2)).EndInit();
+            this.ResumeLayout(false);
+            this.PerformLayout();
+
+        }
+
+        #endregion
+
+        private System.Windows.Forms.MenuStrip menuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem 影像ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem openToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 儲存ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 關ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 影像處理ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 轉灰色ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 轉ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 色調ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem saturationToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem valueToolStripMenuItem;
+        private System.Windows.Forms.OpenFileDialog openFileDialog1;
+        private System.Windows.Forms.SaveFileDialog saveFileDialog1;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.ToolStripMenuItem 物件偵測ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 對話框ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 工具ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 放大縮小ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 平移ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 反射ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 放大ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem perspectiveToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem binaryToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem binaryInvToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem toZeroToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem toZeroInvToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem truncToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem otsuToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem adaptiveThresholdToolStripMenuItem;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Label 數值;
+        private System.Windows.Forms.ToolStripMenuItem templateMatchToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem coeffCorrToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem coeffCorrNormToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 偵測多個ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem morphologyToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem erolationToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem dilationToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem openingToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem closingToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem gradientToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem sobeToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem gxToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem gxToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem gyToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem gxyToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem filterToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem filter2DToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem2;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem3;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem4;
+        private System.Windows.Forms.ToolStripMenuItem blurToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem gaussainToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem mediamToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem biToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 讀卡機ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem cannyToolStripMenuItem;
+        private System.Windows.Forms.TrackBar trackBar1;
+        private System.Windows.Forms.Label min;
+        private System.Windows.Forms.Label max;
+        private System.Windows.Forms.TrackBar trackBar2;
+        private System.Windows.Forms.ToolStripMenuItem findCoutoursToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem contourToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem findContourToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem momentsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem perimeterToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 找圖點ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem histgramsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem histgramsToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem bToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem gToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem rToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 遮罩ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem bcdfToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem equalzationToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem claheToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem comparehistToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem lineToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem lineToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem plineToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem circleToolStripMenuItem;
+    }
+}
+

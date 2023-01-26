@@ -1,0 +1,1122 @@
+﻿using Emgu.CV;
+using Emgu.CV.CvEnum;
+using Emgu.CV.Structure;
+using Emgu.CV.Util;
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+
+namespace _0923
+{
+
+    public partial class Form1 : Form
+    {
+        Mat src;
+        Mat dst = new Mat();
+        Mat hsving = new Mat();
+        VectorOfMat hsv_ch = new VectorOfMat();
+
+
+        public Form1()
+        {
+            InitializeComponent();
+
+        }
+
+        private void 轉ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            CvInvoke.CvtColor(src, dst, ColorConversion.Bgr2Hsv);
+            dst = hsving;
+            pictureBox2.Image = dst.Bitmap;
+            CvInvoke.Split(src, hsv_ch);
+        }
+
+        private void openToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+            if (openFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                src = CvInvoke.Imread(openFileDialog1.FileName, LoadImageType.AnyColor);
+                pictureBox1.Image = src.Bitmap;
+            }
+        }
+
+        private void 關ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
+
+        private void 儲存ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            saveFileDialog1.Filter = "(*.jpg)|*.jpg|(*.png)|*.png";
+            if (saveFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                pictureBox2.Image.Save(saveFileDialog1.FileName);
+            }
+        }
+
+        private void 轉灰色ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+            if (src.NumberOfChannels >= 3)
+            {
+                CvInvoke.CvtColor(src, dst, ColorConversion.Bgr2Gray);
+                pictureBox2.Image = dst.Bitmap;
+                pictureBox2.SizeMode = PictureBoxSizeMode.Zoom;
+            }
+        }
+
+        private void 色調ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            pictureBox2.SizeMode = PictureBoxSizeMode.Zoom;
+            pictureBox2.Image = hsv_ch[0].Bitmap;
+        }
+
+        private void saturationToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            pictureBox2.SizeMode = PictureBoxSizeMode.Zoom;
+            pictureBox2.Image = hsv_ch[1].Bitmap;
+        }
+
+        private void valueToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            pictureBox2.SizeMode = PictureBoxSizeMode.Zoom;
+            pictureBox2.Image = hsv_ch[2].Bitmap;
+        }
+
+        private void 物件偵測ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            pictureBox2.SizeMode = PictureBoxSizeMode.Zoom;
+            CvInvoke.CvtColor(dst, dst, ColorConversion.Bgr2Hsv);
+            Mat lower = new Mat(dst.Height, dst.Width, DepthType.Cv8U, 3);
+            Mat upper = new Mat(dst.Height, dst.Width, DepthType.Cv8U, 3);
+            lower.SetTo(new MCvScalar(80 - 10, 40, 40));
+            upper.SetTo(new MCvScalar(80 + 10, 255, 255));
+            CvInvoke.InRange(dst, lower, upper, dst);
+            pictureBox2.Image = dst.Bitmap;
+        }
+
+        private void 對話框ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            CvInvoke.NamedWindow("New Image");
+            Mat img = new Mat(200, 200, DepthType.Cv8U, 3);
+            img.SetTo(new MCvScalar(255, 84, 0));
+            CvInvoke.PutText(img,
+                                    "LIN YEN CHIN 10727428 3B",
+                                    new Point(10, 100),
+                                    FontFace.HersheyComplex,
+                                    0.35,
+                                    new MCvScalar(255, 255, 255));
+            CvInvoke.Imshow("New Image", img);
+            CvInvoke.WaitKey(0);
+            CvInvoke.DestroyWindow("New Image");
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void 放大縮小ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            pictureBox2.SizeMode = PictureBoxSizeMode.Normal;
+            CvInvoke.Resize(src, dst, new Size(100, 100));
+            pictureBox2.Image = dst.Bitmap;
+        }
+
+        private void 平移ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            pictureBox2.SizeMode = PictureBoxSizeMode.StretchImage;
+            double angle = 60.0;
+            Mat M2x3 = new Mat();
+            CvInvoke.GetRotationMatrix2D(new PointF(src.Width / 2, src.Height / 2), angle, 1, M2x3);
+            CvInvoke.WarpAffine(src, dst, M2x3, src.Size);
+            pictureBox2.Image = dst.Bitmap;
+        }
+
+        private void 反射ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            PointF[] srcpoints = new PointF[] { new PointF(0, 0), new PointF(90, 0), new PointF(0, 90) };
+            PointF[] dstpoints = new PointF[] { new PointF(0 + 50, 0 + 50), new PointF(90 + 50, 0 + 50), new PointF(0 + 50, 90 + 50) };
+            Mat M2x3 = new Mat();
+            M2x3 = CvInvoke.GetAffineTransform(srcpoints, dstpoints);
+            CvInvoke.WarpAffine(src, dst, M2x3, dst.Size);
+            pictureBox2.Image = dst.Bitmap;
+        }
+
+        private void 放大ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            pictureBox2.SizeMode = PictureBoxSizeMode.Normal;
+            CvInvoke.Resize(src, dst, new Size(0, 0), 1.5, 1.5, Inter.Nearest);
+            pictureBox2.Image = dst.Bitmap;
+        }
+
+        private void perspectiveToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            PointF[] scrpointF = new PointF[]{ new PointF(67,106),
+                                               new PointF(180, 106),
+                                               new PointF(180, 390),
+                                               new PointF(58, 390)
+        };
+            PointF[] dstpointF = new PointF[]{ new PointF(0,0),
+                                               new PointF(476, 0),
+                                               new PointF(476, 639),
+                                               new PointF(0, 613)
+        };
+            Mat m3x3 = new Mat();
+            Mat dest = new Mat(new Size(613, 471), DepthType.Cv8U, 3);
+            m3x3 = CvInvoke.GetPerspectiveTransform(scrpointF, dstpointF);
+            CvInvoke.WarpPerspective(src, dest, m3x3, dest.Size);
+            src = dest;
+            pictureBox2.Image = dest.Bitmap;
+
+        }
+
+        private void binaryToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Mat graying = new Mat();
+            CvInvoke.CvtColor(src, graying, ColorConversion.Bgr2Gray);
+            CvInvoke.Threshold(graying, dst, Int32.Parse(textBox1.Text), 255.0, ThresholdType.Binary);
+            pictureBox2.Image = dst.Bitmap;
+        }
+
+        private void binaryInvToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Mat graying = new Mat();
+            CvInvoke.CvtColor(src, graying, ColorConversion.Bgr2Gray);
+            CvInvoke.Threshold(graying, dst, Int32.Parse(textBox1.Text), 255.0, ThresholdType.BinaryInv);
+            pictureBox2.Image = dst.Bitmap;
+        }
+
+        private void toZeroToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Mat graying = new Mat();
+            CvInvoke.CvtColor(src, graying, ColorConversion.Bgr2Gray);
+            CvInvoke.Threshold(graying, dst, 128.0, 255.0, ThresholdType.ToZero);
+            pictureBox2.Image = dst.Bitmap;
+        }
+
+        private void toZeroInvToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Mat graying = new Mat();
+            CvInvoke.CvtColor(src, graying, ColorConversion.Bgr2Gray);
+            CvInvoke.Threshold(graying, dst, 128, 255.0, ThresholdType.ToZeroInv);
+            pictureBox2.Image = dst.Bitmap;
+        }
+
+        private void truncToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Mat graying = new Mat();
+            CvInvoke.CvtColor(src, graying, ColorConversion.Bgr2Gray);
+            CvInvoke.Threshold(graying, dst, 128, 255.0, ThresholdType.Trunc);
+            pictureBox2.Image = dst.Bitmap;
+        }
+
+        private void otsuToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Mat graying = new Mat();
+            CvInvoke.CvtColor(src, graying, ColorConversion.Bgr2Gray);
+            CvInvoke.Threshold(graying, dst, 128, 255.0, ThresholdType.Otsu);
+            pictureBox2.Image = dst.Bitmap;
+        }
+
+        private void adaptiveThresholdToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Mat graying = new Mat();
+            CvInvoke.CvtColor(src, graying, ColorConversion.Bgr2Gray);
+            CvInvoke.AdaptiveThreshold(graying, dst, 255.0, AdaptiveThresholdType.MeanC, ThresholdType.Binary, 15, 10);
+            pictureBox2.Image = dst.Bitmap;
+        }
+
+        private void coeffCorrToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Mat Graying = new Mat();
+            CvInvoke.CvtColor(src, Graying, ColorConversion.Bgr2Gray);
+            Mat Temp1 = new Mat();
+            if (openFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                Temp1 = CvInvoke.Imread(openFileDialog1.FileName, LoadImageType.Grayscale);
+                CvInvoke.MatchTemplate(Graying, Temp1, dst, TemplateMatchingType.Ccoeff);
+                double min = 0, max = 0;
+                Point maxp = new Point(0, 0);
+                Point minp = new Point(0, 0);
+                CvInvoke.MinMaxLoc(dst, ref min, ref max, ref minp, ref maxp);
+                CvInvoke.Rectangle(src, new Rectangle(maxp, new Size(Temp1.Width, Temp1.Height)), new MCvScalar(0, 0, 255), 1);
+                pictureBox2.Image = src.Bitmap;
+            }
+        }
+
+        private void coeffCorrNormToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Mat graying = new Mat();
+            CvInvoke.CvtColor(src, graying, ColorConversion.Bgr2Gray);
+
+            Mat temp1 = new Mat();
+
+            if (openFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                temp1 = CvInvoke.Imread(openFileDialog1.FileName, LoadImageType.Grayscale);
+                CvInvoke.MatchTemplate(graying, temp1, dst, TemplateMatchingType.CcoeffNormed);
+
+                double min = 0, max = 0;
+                Point maxp = new Point(0, 0);
+                Point minp = new Point(0, 0);
+                CvInvoke.MinMaxLoc(dst, ref min, ref max, ref minp, ref maxp);
+
+                if (max > 0.8)
+                {
+                    CvInvoke.Rectangle(src, new Rectangle(maxp, new Size(temp1.Width, temp1.Height)), new MCvScalar(0, 0, 255), 1);
+                    CvInvoke.PutText(src, max.ToString("0.####"), maxp, FontFace.HersheyComplex, 0.8, new MCvScalar(0, 0, 255));
+
+                }
+                else
+                {
+                    MessageBox.Show("未偵測到，最大相似度=" + max);
+                }
+                pictureBox2.Image = src.Bitmap;
+            }
+        }
+
+        private void 偵測多個ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Mat graying = new Mat();
+            CvInvoke.CvtColor(src, graying, ColorConversion.Bgr2Gray);
+
+            Mat temp1 = new Mat();
+
+            if (openFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                temp1 = CvInvoke.Imread(openFileDialog1.FileName, LoadImageType.Grayscale);
+                CvInvoke.MatchTemplate(graying, temp1, dst, TemplateMatchingType.CcoeffNormed);
+
+                double min = 0, max = 0;
+                Point maxp = new Point(0, 0);
+                Point minp = new Point(0, 0);
+                CvInvoke.MinMaxLoc(dst, ref min, ref max, ref minp, ref maxp);
+
+                while (max > 0.5)
+                {
+                    CvInvoke.Rectangle(src, new Rectangle(maxp, new Size(temp1.Width, temp1.Height)), new MCvScalar(0, 0, 255), 1);
+                    CvInvoke.PutText(src, max.ToString("0.####"), new System.Drawing.Point(maxp.X, maxp.Y), FontFace.HersheyComplex, 1.0, new Bgr(255, 255, 255).MCvScalar);
+                    maxp.X -= temp1.Width / 2;
+                    maxp.Y -= temp1.Height / 2;
+                    CvInvoke.Rectangle(dst, new Rectangle(maxp, new Size(temp1.Width, temp1.Height)), new MCvScalar(0, 0, 0), -1);
+                    CvInvoke.MinMaxLoc(dst, ref min, ref max, ref minp, ref maxp);
+
+                }
+
+                pictureBox2.Image = src.Bitmap;
+            }
+        }
+
+        private void erolationToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Mat element = new Mat(5, 5, DepthType.Cv8U, 1);
+            element.SetTo(new MCvScalar(255));
+
+            CvInvoke.Erode(src, dst, element, new Point(-1, -1), 1, BorderType.Default, new MCvScalar(0));
+            pictureBox2.Image = dst.Bitmap;
+        }
+
+        private void dilationToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Mat element = new Mat(5, 5, DepthType.Cv8U, 1);
+            element.SetTo(new MCvScalar(255));
+
+            CvInvoke.Dilate(src, dst, element, new Point(-1, -1), 5, BorderType.Default, new MCvScalar(0));
+            pictureBox2.Image = dst.Bitmap;
+        }
+
+        private void openingToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Mat kernel = new Mat(5, 5, DepthType.Cv8U, 1);
+            kernel.SetTo(new MCvScalar(255));
+
+            CvInvoke.MorphologyEx(src, dst, MorphOp.Open, kernel, new Point(-1, -1), 1, BorderType.Default, new MCvScalar(0));
+            pictureBox2.Image = dst.Bitmap;
+        }
+
+        private void closingToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Mat kernel = new Mat(5, 5, DepthType.Cv8U, 1);
+            kernel.SetTo(new MCvScalar(255));
+
+            CvInvoke.MorphologyEx(src, dst, MorphOp.Close, kernel, new Point(-1, -1), 5, BorderType.Default, new MCvScalar(0));
+            pictureBox2.Image = dst.Bitmap;
+        }
+
+        private void gradientToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Mat kernel = CvInvoke.GetStructuringElement(ElementShape.Rectangle, new Size(5, 5), new Point(-1, -1));
+            kernel.SetTo(new MCvScalar(255));
+
+            CvInvoke.MorphologyEx(src, dst, MorphOp.Gradient, kernel, new Point(-1, -1), 1, BorderType.Default, new MCvScalar(0));
+            pictureBox2.Image = dst.Bitmap;
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void gxToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Mat graying = new Mat();
+
+            CvInvoke.CvtColor(src, graying, ColorConversion.Bgr2Gray);
+            CvInvoke.Sobel(graying, dst, DepthType.Cv16S, 0, 1);
+
+            CvInvoke.ConvertScaleAbs(dst, dst, 1, 0);
+            pictureBox2.Image = dst.Bitmap;
+        }
+
+        private void gxyToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Mat graying = new Mat();
+            Mat dst2 = new Mat();
+            Mat dst3 = new Mat();
+            CvInvoke.CvtColor(src, graying, ColorConversion.Bgr2Gray);
+            CvInvoke.Sobel(graying, dst2, DepthType.Cv16S, 0, 1);
+            CvInvoke.Sobel(graying, dst3, DepthType.Cv16S, 1, 0);
+            CvInvoke.Add(dst2, dst3, dst);
+            CvInvoke.ConvertScaleAbs(dst, dst, 1, 0);
+            pictureBox2.Image = dst.Bitmap;
+        }
+
+        private void gyToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Mat graying = new Mat();
+
+            CvInvoke.CvtColor(src, graying, ColorConversion.Bgr2Gray);
+            CvInvoke.Sobel(graying, dst, DepthType.Cv16S, 1, 0);
+
+            CvInvoke.ConvertScaleAbs(dst, dst, 1, 0);
+            pictureBox2.Image = dst.Bitmap;
+        }
+
+        private void toolStripMenuItem2_Click(object sender, EventArgs e)
+        {
+            Mat graying = new Mat();
+            CvInvoke.CvtColor(src, graying, ColorConversion.Bgr2Gray);
+
+            Mat ker = new Mat(3, 3, DepthType.Cv32F, 1);
+            ker.SetTo(new MCvScalar(1.0 / 9.0));
+
+            CvInvoke.Filter2D(src, src, ker, new Point(-1, -1));
+            pictureBox2.Image = src.Bitmap;
+        }
+
+        private void toolStripMenuItem3_Click(object sender, EventArgs e)
+        {
+            Mat graying = new Mat();
+            CvInvoke.CvtColor(src, graying, ColorConversion.Bgr2Gray);
+
+            Mat ker = new Mat(5, 5, DepthType.Cv32F, 1);
+            ker.SetTo(new MCvScalar(1.0 / 25.0));
+
+            CvInvoke.Filter2D(src, src, ker, new Point(-1, -1));
+            pictureBox2.Image = src.Bitmap;
+        }
+
+        private void toolStripMenuItem4_Click(object sender, EventArgs e)
+        {
+            Mat graying = new Mat();
+            CvInvoke.CvtColor(src, graying, ColorConversion.Bgr2Gray);
+
+            Mat ker = new Mat(7, 7, DepthType.Cv32F, 1);
+            ker.SetTo(new MCvScalar(1.0 / 49.0));
+
+            CvInvoke.Filter2D(src, src, ker, new Point(-1, -1));
+            pictureBox2.Image = src.Bitmap;
+        }
+
+        private void blurToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            CvInvoke.Blur(src, dst, new Size(5, 5), new Point(-1, -1));
+            pictureBox2.Image = dst.Bitmap;
+        }
+
+        private void gaussainToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            CvInvoke.GaussianBlur(src, dst, new Size(5, 5), 0);
+            pictureBox2.Image = dst.Bitmap;
+        }
+
+        private void mediamToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            CvInvoke.MedianBlur(src, dst, 5);
+            pictureBox2.Image = dst.Bitmap;
+        }
+
+        private void biToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            CvInvoke.BilateralFilter(src, dst, 5, 1.0, 1.0);
+            pictureBox2.Image = dst.Bitmap;
+        }
+
+        private void 讀卡機ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Mat grayimg = new Mat();
+            PointF[] scrpointF = new PointF[]{ new PointF(67,106),
+                                               new PointF(180, 106),
+                                               new PointF(180, 390),
+                                               new PointF(58, 390)
+        };
+            PointF[] dstpointF = new PointF[]{ new PointF(0,0),
+                                               new PointF(471, 0),
+                                               new PointF(471, 613),
+                                               new PointF(0, 613)
+        };
+            Mat m3x3 = new Mat();
+            Mat dest = new Mat(new Size(613, 471), DepthType.Cv8U, 3);
+            m3x3 = CvInvoke.GetPerspectiveTransform(scrpointF, dstpointF);
+            CvInvoke.WarpPerspective(src, dest, m3x3, dest.Size);
+
+
+            CvInvoke.CvtColor(dest, grayimg, ColorConversion.Bgr2Gray);
+            src = dest;
+
+            CvInvoke.Threshold(grayimg, dest, 150, 255.0, ThresholdType.BinaryInv);
+            //pictureBox2.Image = dest.Bitmap;
+            Mat ans1 = new Mat();
+            int i = 0, x = 84, y = 46, ans = 0;
+            while (i < 5)
+            {
+                if (openFileDialog1.ShowDialog() == DialogResult.OK)
+                {
+                    ans1 = CvInvoke.Imread(openFileDialog1.FileName, LoadImageType.Grayscale);
+
+                    CvInvoke.MatchTemplate(dest, ans1, dst, TemplateMatchingType.CcoeffNormed);
+                    double min = 0, max = 0;
+                    Point minp = new Point(0, 0);
+
+                    Point maxp = new Point(0, 0);
+                    Point error = new Point(x, y);
+                    CvInvoke.MinMaxLoc(dst, ref min, ref max, ref minp, ref maxp);
+
+                    //CvInvoke.Rectangle(dest, new Rectangle(maxp, new Size(ans1.Width, ans1.Height)), new MCvScalar(255, 255, 255), 3);
+                    CvInvoke.Rectangle(dest, new Rectangle(error, new Size(ans1.Width, ans1.Height)), new MCvScalar(255, 255, 255), -3);
+                    y = y + 60;
+                    if (max > 0.99)
+                        ans = ans + 20;
+
+                    i++;
+                    pictureBox2.Image = dest.Bitmap;
+                }
+            }
+
+            MessageBox.Show("Score=" + ans);
+        }
+
+        private void cannyToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            dst = src.Clone();
+            Mat grayimg = new Mat();
+            CvInvoke.CvtColor(src, grayimg, ColorConversion.Bgr2Gray);
+            Mat edgeimg = new Mat();
+            CvInvoke.Canny(grayimg, edgeimg, 80, 150);
+            pictureBox2.Image = edgeimg.Bitmap;
+
+        }
+
+        private void trackBar1_Scroll(object sender, EventArgs e)
+        {
+            dst = src.Clone();
+            Mat grayimg = new Mat();
+            CvInvoke.CvtColor(src, grayimg, ColorConversion.Bgr2Gray);
+            Mat edgeimg = new Mat();
+            CvInvoke.Canny(grayimg, edgeimg, trackBar1.Value, trackBar2.Value);
+            pictureBox2.Image = edgeimg.Bitmap;
+        }
+
+        private void trackBar2_Scroll(object sender, EventArgs e)
+        {
+            dst = src.Clone();
+            Mat grayimg = new Mat();
+            CvInvoke.CvtColor(src, grayimg, ColorConversion.Bgr2Gray);
+            Mat edgeimg = new Mat();
+            CvInvoke.Canny(grayimg, edgeimg, trackBar1.Value, trackBar2.Value);
+            pictureBox2.Image = edgeimg.Bitmap;
+        }
+
+        private void findCoutoursToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Mat grayimg = new Mat();
+            CvInvoke.CvtColor(src, grayimg, ColorConversion.Bgr2Gray);
+            VectorOfVectorOfPoint contours = new VectorOfVectorOfPoint();
+            CvInvoke.FindContours(grayimg, contours, null, RetrType.External, ChainApproxMethod.ChainApproxSimple);
+            int count = contours.Size;
+
+            dst = src.Clone();
+
+            for (int i = 0; i < count; i++)
+                CvInvoke.DrawContours(dst, contours, i, new MCvScalar(0, 0, 255), 2);
+            pictureBox2.Image = dst.Bitmap;
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void findContourToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Mat grayimg = new Mat();
+            CvInvoke.CvtColor(src, grayimg, ColorConversion.Bgr2Gray);
+
+            VectorOfVectorOfPoint contours = new VectorOfVectorOfPoint();
+
+            CvInvoke.FindContours(grayimg, contours, null, RetrType.External, ChainApproxMethod.ChainApproxSimple);
+
+            int count = contours.Size;
+
+            dst = src.Clone();
+
+            for (int i = 0; i < count; i++)
+                CvInvoke.DrawContours(dst, contours, i, new MCvScalar(0, 0, 255), 2);
+
+            pictureBox2.Image = dst.Bitmap;
+
+        }
+
+        private void momentsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Mat grayimg = new Mat();
+            CvInvoke.CvtColor(src, grayimg, ColorConversion.Bgr2Gray);
+            VectorOfVectorOfPoint contours = new VectorOfVectorOfPoint();
+
+            CvInvoke.FindContours(grayimg, contours, null, RetrType.External, ChainApproxMethod.ChainApproxSimple);
+
+            int count = contours.Size;
+            double[] m00 = new double[count];
+            double[] m10 = new double[count];
+            double[] m01 = new double[count];
+
+            Point[] center = new Point[count];  //中心點陣列
+            Point[] area = new Point[count];    //面積位置陣列
+            MCvMoments[] mm = new MCvMoments[count];
+            dst = src.Clone();
+
+            for (int i = 0; i < count; i++)
+            {
+                VectorOfPoint contour = contours[i];
+                mm[i] = CvInvoke.Moments(contour);
+                m00[i] = mm[i].M00;
+                m10[i] = mm[i].M10;
+                m01[i] = mm[i].M01;
+                double X = m10[i] / m00[i];  // X = m10 / m00
+                double Y = m01[i] / m00[i];  // Y = m01 / m00
+                center[i] = new Point((int)X, (int)Y);  //  中心點座標
+                area[i] = new Point((int)X - 50, (int)Y - 50);  // 面積標示座標
+                CvInvoke.PutText(dst, Convert.ToString(mm[i].M00),
+                                area[i],
+                                FontFace.HersheySimplex,
+                                0.9,
+                                new MCvScalar(255, 255, 255),
+                                2);
+                CvInvoke.DrawContours(dst, contours, i, new MCvScalar(0, 0, 255), 2);
+                CvInvoke.Circle(dst, center[i], 10, new MCvScalar(0, 0, 255), -1);
+            }
+
+            pictureBox2.Image = dst.Bitmap;
+
+            for (int i = 0; i < count; i++)
+            {
+                VectorOfPoint contour = contours[i];
+                MCvMoments mm1 = CvInvoke.Moments(contour);
+
+                MessageBox.Show("M00 = " + mm1.M00 +
+                                "\n\rM01 = " + mm1.M01 +
+                                "\n\rM10 = " + mm1.M10,
+                                "Object " + (i + 1) + "/" + count);
+            }
+
+        }
+
+        private void perimeterToolStripMenuItem_Click(object sender, EventArgs e)
+        {//產生灰階
+            int i = 0;
+            Mat grayimg = new Mat();
+            CvInvoke.CvtColor(src, grayimg, ColorConversion.Bgr2Gray);
+            //找輪廓
+            VectorOfVectorOfPoint contours = new VectorOfVectorOfPoint();
+            CvInvoke.FindContours(grayimg, contours, null, RetrType.External, ChainApproxMethod.ChainApproxNone);
+            int count = contours.Size;
+            //複製影像
+            dst = src.Clone();
+
+            for (i = 0; i < count; i++)
+            {
+                VectorOfPoint contour = contours[i];
+                MCvMoments mm = CvInvoke.Moments(contour);
+                double len = CvInvoke.ArcLength(contour, true);
+
+                CvInvoke.PutText(dst, len.ToString("##.##"), new Point(Convert.ToInt32(mm.M10 / mm.M00), Convert.ToInt32(mm.M01 / mm.M00)), FontFace.HersheyComplexSmall, 1.0, new MCvScalar(0, 0, 255));
+
+
+                CvInvoke.PutText(dst, mm.M00.ToString("##.##"), new Point(Convert.ToInt32(mm.M10 / mm.M00), Convert.ToInt32(mm.M01 / mm.M00) + 20), FontFace.HersheyComplexSmall, 1.0, new MCvScalar(0, 0, 255));
+                //  MessageBox.Show("Length=" + len, "object" + (i + 1) + "/" + count);
+
+            }
+            pictureBox2.Image = dst.Bitmap;
+        }
+
+        private void 找圖點ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            //產生灰階
+            int i = 0, j = 0;
+            Mat grayimg = new Mat();
+            CvInvoke.CvtColor(src, grayimg, ColorConversion.Bgr2Gray);
+            //找輪廓
+            VectorOfVectorOfPoint contours = new VectorOfVectorOfPoint();
+            CvInvoke.FindContours(grayimg, contours, null, RetrType.External, ChainApproxMethod.ChainApproxNone);
+            int count = contours.Size;
+            //複製影像
+            dst = src.Clone();
+
+            for (i = 0; i < count; i++)
+            {
+                VectorOfPoint contour = contours[i];
+                VectorOfPoint approx_contour = new VectorOfPoint();
+                double len = CvInvoke.ArcLength(contour, true);
+                CvInvoke.ApproxPolyDP(contour, approx_contour, 0.05 * len, true);
+                Point[] pts = approx_contour.ToArray();
+                for (j = 0; j < pts.Length; j++)
+                {
+                    Point p1 = new Point(pts[j].X, pts[j].Y);
+                    Point p2;
+                    if (j == pts.Length - 1)
+                        p2 = new Point(pts[0].X, pts[0].Y);
+                    else
+                        p2 = new Point(pts[j + 1].X, pts[j + 1].Y);
+
+                    CvInvoke.Line(dst, p1, p2, new MCvScalar(0, 0, 255), 2);
+                    CvInvoke.Circle(dst, p1, 3, new MCvScalar(0, 0, 255), -1);
+                }
+                pictureBox2.Image = dst.Bitmap;
+            }
+        }
+
+        Mat r_hist = new Mat();
+        Mat g_hist = new Mat();
+        Mat b_hist = new Mat();
+        private void histgramsToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            VectorOfMat bgr_chs = new VectorOfMat();
+            CvInvoke.Split(src, bgr_chs);
+            int[] histSize = { 256 };
+            float[] ranges = { 0f, 255f };
+
+            CvInvoke.CalcHist(bgr_chs, new int[] { 0 }, null, b_hist, histSize, ranges, false);
+            CvInvoke.CalcHist(bgr_chs, new int[] { 1 }, null, g_hist, histSize, ranges, false);
+            CvInvoke.CalcHist(bgr_chs, new int[] { 2 }, null, r_hist, histSize, ranges, false);
+
+            double min = 0, max = 0, b_max = 0, g_max = 0, r_max = 0;
+            Point maxp = new Point(0, 0);
+            Point minp = new Point(0, 0);
+
+            CvInvoke.MinMaxLoc(b_hist, ref min, ref b_max, ref minp, ref maxp);
+            CvInvoke.MinMaxLoc(g_hist, ref min, ref g_max, ref minp, ref maxp);
+            CvInvoke.MinMaxLoc(r_hist, ref min, ref r_max, ref minp, ref maxp);
+            max = Math.Max(Math.Max(b_max, g_max), r_max);
+
+            dst = new Mat(256, 256, DepthType.Cv8U, 3);
+            dst.SetTo(new MCvScalar(255, 255, 255));
+
+            Point[] pts = new Point[256];
+
+            Image<Gray, Int32> hist_data = b_hist.ToImage<Gray, Int32>();
+            for (int i = 0; i < 256; i++)
+            {
+                pts[i].X = i;
+                pts[i].Y = 255 - Convert.ToInt32(hist_data.Data[i, 0, 0] / max * 255);
+            }
+            CvInvoke.Polylines(dst, pts, false, new MCvScalar(255, 0, 0), 1);
+
+            hist_data = g_hist.ToImage<Gray, Int32>();
+            for (int i = 0; i < 256; i++)
+            {
+                pts[i].X = i;
+                pts[i].Y = 255 - Convert.ToInt32(hist_data.Data[i, 0, 0] / max * 255);
+            }
+            CvInvoke.Polylines(dst, pts, false, new MCvScalar(0, 255, 0), 1);
+
+            ;
+
+            hist_data = r_hist.ToImage<Gray, Int32>();
+            for (int i = 0; i < 256; i++)
+            {
+                pts[i].X = i;
+                pts[i].Y = 255 - Convert.ToInt32(hist_data.Data[i, 0, 0] / max * 255);
+            }
+            CvInvoke.Polylines(dst, pts, false, new MCvScalar(0, 0, 255), 1);
+
+            pictureBox2.Image = dst.Bitmap;
+        }
+
+        private void bToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            VectorOfMat bgr_chs = new VectorOfMat();
+            CvInvoke.Split(src, bgr_chs);
+            int[] histSize = { 256 };
+            float[] ranges = { 0f, 255f };
+
+            CvInvoke.CalcHist(bgr_chs, new int[] { 0 }, null, b_hist, histSize, ranges, false);
+            CvInvoke.CalcHist(bgr_chs, new int[] { 1 }, null, g_hist, histSize, ranges, false);
+            CvInvoke.CalcHist(bgr_chs, new int[] { 2 }, null, r_hist, histSize, ranges, false);
+
+            double min = 0, max = 0, b_max = 0, g_max = 0, r_max = 0;
+            Point maxp = new Point(0, 0);
+            Point minp = new Point(0, 0);
+
+            CvInvoke.MinMaxLoc(b_hist, ref min, ref b_max, ref minp, ref maxp);
+            CvInvoke.MinMaxLoc(g_hist, ref min, ref g_max, ref minp, ref maxp);
+            CvInvoke.MinMaxLoc(r_hist, ref min, ref r_max, ref minp, ref maxp);
+            max = Math.Max(Math.Max(b_max, g_max), r_max);
+
+            dst = new Mat(256, 256, DepthType.Cv8U, 3);
+            dst.SetTo(new MCvScalar(255, 255, 255));
+
+            Point[] pts = new Point[256];
+
+            Image<Gray, Int32> hist_data = b_hist.ToImage<Gray, Int32>();
+            for (int i = 0; i < 256; i++)
+            {
+                pts[i].X = i;
+                pts[i].Y = 255 - Convert.ToInt32(hist_data.Data[i, 0, 0] / max * 255);
+            }
+            CvInvoke.Polylines(dst, pts, false, new MCvScalar(255, 0, 0), 1);
+            pictureBox2.Image = dst.Bitmap;
+        }
+
+        private void gToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            VectorOfMat bgr_chs = new VectorOfMat();
+            CvInvoke.Split(src, bgr_chs);
+            int[] histSize = { 256 };
+            float[] ranges = { 0f, 255f };
+
+            CvInvoke.CalcHist(bgr_chs, new int[] { 0 }, null, b_hist, histSize, ranges, false);
+            CvInvoke.CalcHist(bgr_chs, new int[] { 1 }, null, g_hist, histSize, ranges, false);
+            CvInvoke.CalcHist(bgr_chs, new int[] { 2 }, null, r_hist, histSize, ranges, false);
+
+            double min = 0, max = 0, b_max = 0, g_max = 0, r_max = 0;
+            Point maxp = new Point(0, 0);
+            Point minp = new Point(0, 0);
+
+            CvInvoke.MinMaxLoc(b_hist, ref min, ref b_max, ref minp, ref maxp);
+            CvInvoke.MinMaxLoc(g_hist, ref min, ref g_max, ref minp, ref maxp);
+            CvInvoke.MinMaxLoc(r_hist, ref min, ref r_max, ref minp, ref maxp);
+            max = Math.Max(Math.Max(b_max, g_max), r_max);
+
+            dst = new Mat(256, 256, DepthType.Cv8U, 3);
+            dst.SetTo(new MCvScalar(255, 255, 255));
+
+            Point[] pts = new Point[256];
+
+            Image<Gray, Int32> hist_data = g_hist.ToImage<Gray, Int32>();
+            for (int i = 0; i < 256; i++)
+            {
+                pts[i].X = i;
+                pts[i].Y = 255 - Convert.ToInt32(hist_data.Data[i, 0, 0] / max * 255);
+            }
+            CvInvoke.Polylines(dst, pts, false, new MCvScalar(0, 255, 0), 1);
+            pictureBox2.Image = dst.Bitmap;
+        }
+
+        private void rToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            VectorOfMat bgr_chs = new VectorOfMat();
+            CvInvoke.Split(src, bgr_chs);
+            int[] histSize = { 256 };
+            float[] ranges = { 0f, 255f };
+
+            CvInvoke.CalcHist(bgr_chs, new int[] { 0 }, null, b_hist, histSize, ranges, false);
+            CvInvoke.CalcHist(bgr_chs, new int[] { 1 }, null, g_hist, histSize, ranges, false);
+            CvInvoke.CalcHist(bgr_chs, new int[] { 2 }, null, r_hist, histSize, ranges, false);
+
+            double min = 0, max = 0, b_max = 0, g_max = 0, r_max = 0;
+            Point maxp = new Point(0, 0);
+            Point minp = new Point(0, 0);
+
+            CvInvoke.MinMaxLoc(b_hist, ref min, ref b_max, ref minp, ref maxp);
+            CvInvoke.MinMaxLoc(g_hist, ref min, ref g_max, ref minp, ref maxp);
+            CvInvoke.MinMaxLoc(r_hist, ref min, ref r_max, ref minp, ref maxp);
+            max = Math.Max(Math.Max(b_max, g_max), r_max);
+
+            dst = new Mat(256, 256, DepthType.Cv8U, 3);
+            dst.SetTo(new MCvScalar(255, 255, 255));
+
+            Point[] pts = new Point[256];
+
+            Image<Gray, Int32> hist_data = r_hist.ToImage<Gray, Int32>();
+            for (int i = 0; i < 256; i++)
+            {
+                pts[i].X = i;
+                pts[i].Y = 255 - Convert.ToInt32(hist_data.Data[i, 0, 0] / max * 255);
+            }
+            CvInvoke.Polylines(dst, pts, false, new MCvScalar(0, 0, 255), 1);
+            pictureBox2.Image = dst.Bitmap;
+        }
+        Mat histmask;
+        private void 遮罩ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            VectorOfMat bgr_chs = new VectorOfMat();
+            CvInvoke.Split(src, bgr_chs);
+            int[] histSizes = { 256 };
+            float[] ranges = { 0f, 255f };
+            if (histmask != null)
+            {
+                CvInvoke.CalcHist(bgr_chs, new int[] { 0 }, histmask, b_hist, histSizes, ranges, false);
+                CvInvoke.CalcHist(bgr_chs, new int[] { 1 }, histmask, g_hist, histSizes, ranges, false);
+                CvInvoke.CalcHist(bgr_chs, new int[] { 2 }, histmask, r_hist, histSizes, ranges, false);
+            }
+            else
+            {
+                CvInvoke.CalcHist(bgr_chs, new int[] { 0 }, null, b_hist, histSizes, ranges, false);
+                CvInvoke.CalcHist(bgr_chs, new int[] { 1 }, null, g_hist, histSizes, ranges, false);
+                CvInvoke.CalcHist(bgr_chs, new int[] { 2 }, null, r_hist, histSizes, ranges, false);
+            }
+            double min = 0, max = 0, b_max = 0, g_max = 0, r_max = 0;
+            Point maxp = new Point(0, 0);
+            Point minp = new Point(0, 0);
+
+            CvInvoke.MinMaxLoc(b_hist, ref min, ref b_max, ref minp, ref maxp);
+            CvInvoke.MinMaxLoc(g_hist, ref min, ref g_max, ref minp, ref maxp);
+            CvInvoke.MinMaxLoc(r_hist, ref min, ref r_max, ref minp, ref maxp);
+            max = Math.Max(Math.Max(b_max, g_max), r_max);
+            dst = new Mat(256, 256, DepthType.Cv8U, 3);
+            dst.SetTo(new MCvScalar(255, 255, 255));
+
+            Point[] pts = new Point[256];
+
+            Image<Gray, Int32> hist_data = b_hist.ToImage<Gray, Int32>();
+            for (int i = 0; i < 256; i++)
+            {
+                pts[i].X = i;
+                pts[i].Y = 255 - Convert.ToInt32(hist_data.Data[i, 0, 0] / max * 255);
+            }
+            CvInvoke.Polylines(dst, pts, false, new MCvScalar(255, 0, 0), 1);
+
+            hist_data = g_hist.ToImage<Gray, Int32>();
+            for (int i = 0; i < 256; i++)
+            {
+                pts[i].X = i;
+                pts[i].Y = 255 - Convert.ToInt32(hist_data.Data[i, 0, 0] / max * 255);
+            }
+            CvInvoke.Polylines(dst, pts, false, new MCvScalar(0, 255, 0), 1);
+
+            ;
+
+            hist_data = r_hist.ToImage<Gray, Int32>();
+            for (int i = 0; i < 256; i++)
+            {
+                pts[i].X = i;
+                pts[i].Y = 255 - Convert.ToInt32(hist_data.Data[i, 0, 0] / max * 255);
+            }
+            CvInvoke.Polylines(dst, pts, false, new MCvScalar(0, 0, 255), 1);
+
+            pictureBox2.Image = dst.Bitmap;
+
+        }
+
+      int startX;
+        int startY;
+            int endX;
+        int endY;
+       
+        private void pictureBox1_MouseDown(object sender, MouseEventArgs e)
+        {
+           
+            startX = e.X;
+            startY = e.Y;
+        }
+    
+
+        private void pictureBox1_MouseUp(object sender, MouseEventArgs e)
+        {  
+           
+            endX = e.X;
+             endY = e.Y;
+            if (src != null)
+            {
+                dst = src.Clone();
+                Rectangle rect = new Rectangle(new Point(startX, startY), new Size(endX - startX, endY - startY));
+                CvInvoke.Rectangle(dst, rect, new MCvScalar(255, 0, 0), 2);
+                pictureBox1.Image = dst.Bitmap;
+
+                histmask = new Mat(src.Size, src.Depth, 1);
+                histmask.SetTo(new MCvScalar(0));
+                CvInvoke.Rectangle(histmask, rect, new MCvScalar(255), -1);
+                pictureBox2.Image = histmask.Bitmap;
+            }
+        }
+      
+        private void bcdfToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+            double min = 0, max = 0;
+            Point maxp = new Point(0, 0);
+            Point minp = new Point(0, 0);
+            CvInvoke.MinMaxLoc(b_hist, ref min, ref max, ref minp, ref maxp);
+
+            Mat res = new Mat(256, 256, DepthType.Cv8U, 3);
+            res.SetTo(new MCvScalar(255, 255, 255));
+            
+            Point pt1 = new Point();
+            Point pt2 = new Point();
+            Image<Gray, Int32> hist_data = b_hist.ToImage<Gray, Int32>();
+            for (int i = 0; i < 256; i++)
+            {
+                pt1.X = i;
+                pt1.Y = 255;
+                pt2.X = i;
+                pt2.Y = 255 - Convert.ToInt32(hist_data.Data[i, 0, 0] / max * 255);
+                CvInvoke.Line(res, pt1, pt2, new MCvScalar(255, 0, 0), 1);
+            }
+            MCvScalar sum = CvInvoke.Sum(b_hist);
+
+            double cdf = 0.0;
+            Point[] pts = new Point[256];
+            for (int i = 0; i < 256; i++)
+            {
+                pts[i].X = i;
+                cdf += (Convert.ToDouble(hist_data.Data[i, 0, 0]) / Convert.ToDouble(sum.V0));
+                pts[i].Y = 255 - Convert.ToInt32(cdf * 255);
+            }
+            CvInvoke.Polylines(res, pts, false,new MCvScalar(0, 0, 255), 1);
+            CvInvoke.PutText(res, "cdf", new System.Drawing.Point(180, 30), FontFace.HersheyComplex, 1.0, new Bgr(0, 0, 0).MCvScalar);
+
+                pictureBox2.Image = res.Bitmap;
+            
+
+        }
+
+        private void equalzationToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Mat graying = new Mat();
+            CvInvoke.CvtColor(src, graying, ColorConversion.Bgr2Gray);
+
+            CvInvoke.EqualizeHist(graying, dst);
+
+            pictureBox2.Image = dst.Bitmap;
+        }
+
+        private void claheToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Mat graying = new Mat();
+            CvInvoke.CvtColor(src, graying, ColorConversion.Bgr2Gray);
+
+            CvInvoke.CLAHE(graying,40.0,new Size(8,8),dst);
+
+            pictureBox2.Image = dst.Bitmap;
+        }
+
+        private void comparehistToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            VectorOfMat images = new VectorOfMat(2);
+            CvInvoke.CvtColor(src, images[0], ColorConversion.Bgr2Gray);
+           openFileDialog1.Filter = "(*.jpg)|*.jpg|(*.png)|*.png";
+            if(openFileDialog1.ShowDialog()==DialogResult.OK)
+            {
+                dst = CvInvoke.Imread(openFileDialog1.FileName, LoadImageType.AnyColor);
+                CvInvoke.CvtColor(dst, images[1], ColorConversion.Bgr2Gray);
+                pictureBox2.Image = dst.Bitmap;
+            }
+            int[] histSizes = { 256 };
+            float[] ranges = { 0f, 255f };
+
+            Mat h1 = new Mat();
+            Mat h2 = new Mat();
+            CvInvoke.CalcHist(images, new int[] { 0 }, null, h1, histSizes, ranges, false);
+            CvInvoke.CalcHist(images, new int[] { 1 }, null, h2, histSizes, ranges, false);
+
+            double result = CvInvoke.CompareHist(h1, h2, HistogramCompMethod.Correl); 
+            MessageBox.Show(result.ToString());
+        }
+
+        private void lineToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            dst = src.Clone();
+            Mat grayimg = new Mat();
+            CvInvoke.CvtColor(src, grayimg, ColorConversion.Bgr2Gray);
+
+            Mat edgeimg = new Mat();
+            CvInvoke.Canny(grayimg, edgeimg, 80, 150);
+
+            VectorOfPointF lines = new VectorOfPointF();
+            CvInvoke.HoughLines(edgeimg, lines, 2, 3.14159 / 180.0, trackBar1.Value + 100);
+
+            for (int i = 0; i < lines.Size; i++)
+            { PointF p = lines[i];
+                float rho = p.X;
+                float theta = p.Y;
+
+                double a = Math.Cos(theta), b = Math.Sin(theta);
+                double x0 = rho * a, y0 = rho * b;
+
+                Point pt1 = new Point(), pt2 = new Point();
+                pt1.X = (int)Math.Round(x0 + 1000 * -b);
+                pt1.Y = (int)Math.Round(y0 + 1000 * a);
+                pt2.X = (int)Math.Round(x0 - 1000 * -b);
+                pt2.Y = (int)Math.Round(y0 - 1000 * a);
+                CvInvoke.Line(dst, pt1, pt2, new MCvScalar(0, 0, 255), 1, LineType.AntiAlias);
+                
+            }
+            pictureBox2.Image = dst.Bitmap;
+        }
+
+        private void plineToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            dst = src.Clone();
+
+            Mat grayimg = new Mat();
+            CvInvoke.CvtColor(src, grayimg, ColorConversion.Bgr2Gray);
+
+            Mat edgeimg = new Mat();
+            CvInvoke.Canny(grayimg, edgeimg, 80, 150);
+            
+            LineSegment2D[] lines = CvInvoke.HoughLinesP(edgeimg, 1, 3.14159 / 180.0,trackBar1.Value,100, 20);
+            for(int i=0;i<lines.Length;i++)
+            {
+                LineSegment2D p = lines[i];
+
+                CvInvoke.Line(dst, p.P1, p.P2, new MCvScalar(0,0,255), 2, LineType.AntiAlias);
+            }
+            pictureBox2.Image = dst.Bitmap;
+        }
+
+        private void circleToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            dst = src.Clone();
+            Mat grayimg = new Mat();
+            CvInvoke.CvtColor(src, grayimg, ColorConversion.Rgb2Gray);
+            CvInvoke.GaussianBlur(grayimg, grayimg, new Size(5, 5), 0, 0);
+
+            CircleF[] circles = CvInvoke.HoughCircles(grayimg, HoughType.Gradient, 1, 20, 120, 50, 0, 0);
+
+            for (int i = 0; i < circles.Length; i++)
+            {
+                CircleF circle = circles[i];
+                Point center = new Point((int)Math.Round(circle.Center.X), (int)Math.Round(circle.Center.Y));
+                int radius = (int)Math.Round(circle.Radius);
+
+                CvInvoke.Circle(dst, center, 3, new MCvScalar(0, 255, 0), -1);
+
+                CvInvoke.Circle(dst, center, radius, new MCvScalar(155,50,255), 2);
+            }
+            pictureBox2.Image = dst.Bitmap;
+        }
+    }
+}
+
+
+
+
+

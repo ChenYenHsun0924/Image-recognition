@@ -1,0 +1,230 @@
+﻿using Emgu.CV;
+using Emgu.CV.CvEnum;
+using Emgu.CV.Structure;
+using Emgu.CV.Util;
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+
+namespace _0923
+{
+  
+    public partial class Form1 : Form
+    {
+        Mat src;
+        Mat dst=new Mat();
+        Mat hsving = new Mat();
+        VectorOfMat hsv_ch = new VectorOfMat();
+
+
+        public Form1()
+        {
+            InitializeComponent();
+         
+        }
+        
+        private void 轉ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            CvInvoke.CvtColor(src, dst, ColorConversion.Bgr2Hsv);
+            dst = hsving;
+            pictureBox2.Image = dst.Bitmap;
+            CvInvoke.Split(src, hsv_ch);
+        }
+
+        private void openToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+           
+            if (openFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                src = CvInvoke.Imread(openFileDialog1.FileName, LoadImageType.AnyColor);
+                pictureBox1.Image = src.Bitmap;
+            }
+        }
+
+        private void 關ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
+
+        private void 儲存ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            saveFileDialog1.Filter = "(*.jpg)|*.jpg|(*.png)|*.png";
+            if (saveFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+              
+            }
+        }
+
+        private void 轉灰色ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            
+            if (src.NumberOfChannels >= 3)
+            {
+                CvInvoke.CvtColor(src, dst, ColorConversion.Bgr2Gray);
+                pictureBox2.Image = dst.Bitmap;
+                pictureBox2.SizeMode = PictureBoxSizeMode.Zoom;
+            }
+        }
+
+        private void 色調ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            pictureBox2.SizeMode = PictureBoxSizeMode.Zoom;
+            pictureBox2.Image = hsv_ch[0].Bitmap;
+        }
+
+        private void saturationToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            pictureBox2.SizeMode = PictureBoxSizeMode.Zoom;
+            pictureBox2.Image = hsv_ch[1].Bitmap;
+        }
+
+        private void valueToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            pictureBox2.SizeMode = PictureBoxSizeMode.Zoom;
+            pictureBox2.Image = hsv_ch[2].Bitmap;
+        }
+
+        private void 物件偵測ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            pictureBox2.SizeMode = PictureBoxSizeMode.Zoom;
+            CvInvoke.CvtColor(dst, dst, ColorConversion.Bgr2Hsv);
+            Mat lower = new Mat(dst.Height, dst.Width, DepthType.Cv8U, 3);
+            Mat upper = new Mat(dst.Height, dst.Width, DepthType.Cv8U, 3);
+            lower.SetTo(new MCvScalar(80-10,40,40));
+            upper.SetTo(new MCvScalar(80+10, 255, 255));
+            CvInvoke.InRange(dst, lower, upper, dst);
+            pictureBox2.Image = dst.Bitmap;
+        }
+
+        private void 對話框ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            CvInvoke.NamedWindow("New Image");
+            Mat img = new Mat(200, 200, DepthType.Cv8U, 3);
+            img.SetTo(new MCvScalar(255, 84, 0));
+            CvInvoke.PutText(img,
+                                    "LIN YEN CHIN 10727428 3B",
+                                    new Point(10, 100),
+                                    FontFace.HersheyComplex,
+                                    0.35,
+                                    new MCvScalar(255, 255, 255));
+            CvInvoke.Imshow("New Image", img);
+            CvInvoke.WaitKey(0);
+            CvInvoke.DestroyWindow("New Image");
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void 放大縮小ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            pictureBox2.SizeMode = PictureBoxSizeMode.Normal;
+            CvInvoke.Resize(src, dst, new Size(100, 100));
+            pictureBox2.Image = dst.Bitmap;
+        }
+
+        private void 平移ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            pictureBox2.SizeMode = PictureBoxSizeMode.StretchImage;
+            double angle = 60.0;
+            Mat M2x3 = new Mat();
+            CvInvoke.GetRotationMatrix2D(new PointF(src.Width / 2, src.Height / 2), angle, 1, M2x3);
+            CvInvoke.WarpAffine(src, dst, M2x3, src.Size);
+            pictureBox2.Image = dst.Bitmap;
+        }
+
+        private void 反射ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            PointF[] srcpoints = new PointF[] { new PointF(0, 0), new PointF(90, 0), new PointF(0, 90) };
+            PointF[] dstpoints = new PointF[] { new PointF(0+50, 0+50), new PointF(90+50, 0+50), new PointF(0+50, 90+50) };
+            Mat M2x3 = new Mat();
+            M2x3 = CvInvoke.GetAffineTransform(srcpoints, dstpoints);
+            CvInvoke.WarpAffine(src, dst, M2x3, dst.Size);
+            pictureBox2.Image = dst.Bitmap;
+        }
+
+        private void 放大ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            pictureBox2.SizeMode = PictureBoxSizeMode.Normal;
+            CvInvoke.Resize(src, dst, new Size(0, 0), 1.5, 1.5, Inter.Nearest);
+            pictureBox2.Image = dst.Bitmap;
+        }
+
+        private void perspectiveToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            PointF[] scrPoints = new PointF[] { new PointF(313, 223), new PointF(677, 222), new PointF(772, 506), new PointF(219, 506) };
+            PointF[] dstPoints = new PointF[] { new PointF(0, 0), new PointF(300, 0), new PointF(300, 300), new PointF(0, 300) };
+            Mat dest = new Mat(new Size(300, 300), DepthType.Cv8U, 3);
+            Mat m3x3 = new Mat();
+
+
+            m3x3 = CvInvoke.GetPerspectiveTransform(scrPoints, dstPoints);
+            CvInvoke.WarpPerspective(src, dest, m3x3, dest.Size);
+            pictureBox2.Image = dest.Bitmap;
+            dst = dest;
+        }
+
+        private void binaryToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Mat graying = new Mat();
+            CvInvoke.CvtColor(src, graying, ColorConversion.Bgr2Gray);
+            CvInvoke.Threshold(graying, dst, 128,255.0, ThresholdType.Binary);
+            pictureBox2.Image = dst.Bitmap;
+        }
+
+        private void binaryInvToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Mat graying = new Mat();
+            CvInvoke.CvtColor(src, graying, ColorConversion.Bgr2Gray);
+            CvInvoke.Threshold(graying, dst, 128.0, 255.0, ThresholdType.BinaryInv);
+            pictureBox2.Image = dst.Bitmap;
+        }
+
+        private void toZeroToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Mat graying = new Mat();
+            CvInvoke.CvtColor(src, graying, ColorConversion.Bgr2Gray);
+            CvInvoke.Threshold(graying, dst, 128.0, 255.0, ThresholdType.ToZero);
+            pictureBox2.Image = dst.Bitmap;
+        }
+
+        private void toZeroInvToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Mat graying = new Mat();
+            CvInvoke.CvtColor(src, graying, ColorConversion.Bgr2Gray);
+            CvInvoke.Threshold(graying, dst, 128, 255.0, ThresholdType.ToZeroInv);
+            pictureBox2.Image = dst.Bitmap;
+        }
+
+        private void truncToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Mat graying = new Mat();
+            CvInvoke.CvtColor(src, graying, ColorConversion.Bgr2Gray);
+            CvInvoke.Threshold(graying, dst, 128, 255.0, ThresholdType.Trunc);
+            pictureBox2.Image = dst.Bitmap;
+        }
+
+        private void otsuToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Mat graying = new Mat();
+            CvInvoke.CvtColor(src, graying, ColorConversion.Bgr2Gray);
+            CvInvoke.Threshold(graying, dst, 128, 255.0, ThresholdType.Otsu);
+            pictureBox2.Image = dst.Bitmap;
+        }
+
+        private void adaptiveThresholdToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Mat graying = new Mat();
+            CvInvoke.CvtColor(src, graying, ColorConversion.Bgr2Gray);
+            CvInvoke.AdaptiveThreshold(graying, dst, 255.0, AdaptiveThresholdType.MeanC,ThresholdType.Binary,15,10);
+            pictureBox2.Image = dst.Bitmap;
+        }
+    }
+}
